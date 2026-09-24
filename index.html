@@ -9,13 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
         input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type="number"] { -moz-appearance: textfield; }
-        
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
         .slide-up { animation: slideUp 0.3s ease-out forwards; }
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
     </style>
@@ -107,7 +104,6 @@
                     </div>
                     <button onclick="openQRIS()" class="bg-[#FFC107] hover:bg-yellow-500 text-green-950 font-extrabold py-2.5 px-6 lg:py-3 lg:px-8 rounded-xl lg:rounded-xl shadow-sm flex items-center gap-2 transition transform active:scale-95 text-sm lg:text-base">
                         Pesan Sekarang
-                        <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     </button>
                 </div>
             </div>
@@ -134,7 +130,6 @@
 
             <button onclick="checkoutWA('QRIS')" class="w-full bg-[#205031] hover:bg-green-800 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-green-900/20 transition flex justify-center items-center gap-2 text-sm mb-3 active:scale-95">
                 Sudah Bayar? Lanjut ke WA
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             </button>
             <button onclick="checkoutWA('COD')" class="w-full text-gray-500 hover:text-gray-800 font-semibold py-2 text-xs transition underline decoration-gray-300 underline-offset-4">
                 Bayar tunai di tempat (COD) saja
@@ -154,26 +149,30 @@
 
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
-        // FUNGSI SUPER CONVERTER LINK DRIVE
+        // FUNGSI KONVERSI GAMBAR (GOOGLE DRIVE THUMBNAIL API)
         function getDirectImageUrl(url) {
-            if (!url || typeof url !== 'string') return 'https://placehold.co/400x400/e2e8f0/94a3b8?text=No+Image';
-            
-            // Konversi link tipe Google Drive
-            if (url.includes('drive.google.com')) {
-                // Pola 1: /file/d/ID_FILE/view
-                let match = url.match(/\/d\/(.+?)\//);
-                if (match && match[1]) return `https://drive.google.com/uc?id=${match[1]}`;
-                
-                // Pola 2: ?id=ID_FILE
-                match = url.match(/id=([a-zA-Z0-9_-]+)/);
-                if (match && match[1]) return `https://drive.google.com/uc?id=${match[1]}`;
+            if (!url || typeof url !== 'string' || url.trim() === '') {
+                return 'https://placehold.co/400x400/e2e8f0/94a3b8?text=Gambar+Kosong';
             }
-            return url; // Jika bukan drive, kembalikan asli
+            
+            // Konversi link tipe Google Drive menggunakan THUMBNAIL API
+            if (url.includes('drive.google.com')) {
+                let match = url.match(/\/d\/(.+?)\//);
+                if (match && match[1]) {
+                    // Endpoint thumbnail ini anti-blokir dan resmi dari Google
+                    return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`;
+                }
+                match = url.match(/id=([a-zA-Z0-9_-]+)/);
+                if (match && match[1]) {
+                    return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`;
+                }
+            }
+            return url;
         }
 
         async function fetchProducts() {
             try {
-                const response = await fetch(SCRIPT_URL);
+                const response = await fetch(SCRIPT_URL + "?nocache=" + new Date().getTime());
                 if (!response.ok) throw new Error("Gagal load API");
                 products = await response.json();
                 renderProducts();
@@ -182,6 +181,7 @@
                 document.getElementById('product-container').innerHTML = `
                     <div class="text-center py-10">
                         <p class="text-red-500 font-bold mb-2">Gagal terhubung ke Database Google Sheets.</p>
+                        <p class="text-xs text-gray-500">Pastikan URL Apps Script di dalam file index.html sudah diganti.</p>
                     </div>`;
             }
         }
@@ -236,14 +236,15 @@
                 
                 catProducts.forEach(p => {
                     const currentQty = cart[p.id] ? cart[p.id].qty : '';
-                    
-                    // PENERAPAN FIX GAMBAR ADA DI SINI:
                     const finalImgUrl = getDirectImageUrl(p.image);
                     
                     html += `
                         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col transition hover:shadow-md relative group">
-                            <div class="aspect-square bg-gray-50 p-2 lg:p-3">
-                                <img src="${finalImgUrl}" alt="${p.name}" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/400x400/e2e8f0/94a3b8?text=Gambar+Kosong'">
+                            <div class="aspect-square bg-gray-50 p-2 lg:p-3 relative flex items-center justify-center">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                     <div class="w-5 h-5 border-2 border-green-200 border-t-[#205031] rounded-full animate-spin"></div>
+                                </div>
+                                <img src="${finalImgUrl}" alt="${p.name}" class="w-full h-full object-cover rounded-xl relative z-10 group-hover:scale-105 transition duration-300" onload="this.previousElementSibling.style.display='none'" onerror="this.previousElementSibling.style.display='none'; this.src='https://placehold.co/400x400/e2e8f0/94a3b8?text=Gambar+Rusak'">
                             </div>
                             <div class="p-3 lg:p-4 flex flex-col flex-grow">
                                 <h3 class="text-sm lg:text-base font-bold text-gray-800 leading-tight mb-1 line-clamp-2">${p.name}</h3>
@@ -367,7 +368,7 @@
             pesan += `%0A%0A*Kirim ke Alamat:*%0A(Tulis alamat di sini)%0A%0ATerima kasih!`;
             
             // ⚠️ GANTI NOMOR WA INI ⚠️
-            const nomorWA = "6282188777466"; 
+            const nomorWA = "6281234567890"; 
             window.open(`https://wa.me/${nomorWA}?text=${pesan}`, "_blank");
         }
 
