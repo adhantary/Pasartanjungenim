@@ -1,34 +1,92 @@
 [
   {
     "id": "p001",
+    "category": "Protein & Lauk",
     "name": "Daging Sapi Segar",
     "price": 125000,
     "unit": "1 Kg",
-    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Daging+Sapi",
+    "image": "https://placehold.co/400x400/ef4444/FFFFFF?text=Daging+Sapi",
     "description": "Daging sapi segar harian kualitas terbaik."
   },
   {
     "id": "p002",
-    "name": "Bawang Merah Brebes",
-    "price": 35000,
-    "unit": "1 Kg",
-    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Bawang+Merah",
-    "description": "Bawang merah super, bersih dan kering."
+    "category": "Protein & Lauk",
+    "name": "Ayam Potong Broiler",
+    "price": 38000,
+    "unit": "1 Ekor",
+    "image": "https://placehold.co/400x400/fb923c/FFFFFF?text=Ayam+Potong",
+    "description": "Ayam utuh segar, sudah dibersihkan."
   },
   {
     "id": "p003",
-    "name": "Kopi Khas Tanjung Enim",
-    "price": 15000,
-    "unit": "250 Gram",
-    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Kopi+Lokal",
-    "description": "Kopi robusta petik merah."
+    "category": "Protein & Lauk",
+    "name": "Telur Ayam Negeri",
+    "price": 28000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/fcd34d/FFFFFF?text=Telur+Ayam",
+    "description": "Telur ayam negeri segar dan besar."
   },
   {
     "id": "p004",
-    "name": "Sayur Bayam Cabut",
+    "category": "Sayuran Segar",
+    "name": "Kangkung Cabut",
     "price": 3000,
     "unit": "1 Ikat",
-    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Bayam",
-    "description": "Bayam hijau segar langsung dari kebun."
+    "image": "https://placehold.co/400x400/22c55e/FFFFFF?text=Kangkung",
+    "description": "Kangkung hijau segar langsung dari kebun."
+  },
+  {
+    "id": "p005",
+    "category": "Sayuran Segar",
+    "name": "Kentang Dieng Super",
+    "price": 18000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/d97706/FFFFFF?text=Kentang",
+    "description": "Kentang ukuran besar, cocok untuk perkedel atau sayur."
+  },
+  {
+    "id": "p006",
+    "category": "Sayuran Segar",
+    "name": "Sawi Hijau (Caisim)",
+    "price": 4000,
+    "unit": "1 Ikat",
+    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Sawi+Hijau",
+    "description": "Sawi hijau segar, cocok untuk mie ayam."
+  },
+  {
+    "id": "p007",
+    "category": "Bumbu Dapur",
+    "name": "Bawang Merah Brebes",
+    "price": 35000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/9f1239/FFFFFF?text=Bawang+Merah",
+    "description": "Bawang merah super, bersih dan kering."
+  },
+  {
+    "id": "p008",
+    "category": "Bumbu Dapur",
+    "name": "Cabai Merah Keriting",
+    "price": 45000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/dc2626/FFFFFF?text=Cabai+Merah",
+    "description": "Cabai keriting segar dan pedas."
+  },
+  {
+    "id": "p009",
+    "category": "Bumbu Dapur",
+    "name": "Bawang Putih Kating",
+    "price": 40000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/f3f4f6/000000?text=Bawang+Putih",
+    "description": "Bawang putih kating wangi dan padat."
+  },
+  {
+    "id": "p010",
+    "category": "Produk Lokal",
+    "name": "Kopi Khas Tanjung Enim",
+    "price": 15000,
+    "unit": "250 Gram",
+    "image": "https://placehold.co/400x400/78350f/FFFFFF?text=Kopi+Lokal",
+    "description": "Kopi robusta petik merah."
   }
 ]
