@@ -24,12 +24,17 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Header (Warna Hijau Modern) -->
+    <!-- Header (Warna Hijau Modern dengan Logo) -->
     <header class="bg-green-700 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-md mx-auto px-4 py-4 flex items-center justify-between">
-            <div>
-                <h1 class="text-xl font-bold tracking-tight">Pasar Tanjung Enim</h1>
-                <p class="text-xs text-green-100">Segar & Termurah setiap hari</p>
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Pemanggilan Logo Pasar -->
+                <img src="images/logo-pasar.jpg" alt="Logo Pasar" class="w-11 h-11 object-cover rounded-full border-2 border-white/50 bg-white shadow-sm">
+                
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight leading-tight">Pasar Tanjung Enim</h1>
+                    <p class="text-[11px] text-green-100 mt-0.5">Segar & Termurah setiap hari</p>
+                </div>
             </div>
         </div>
         <!-- Kategori Menu -->
@@ -78,7 +83,6 @@
 
         async function fetchProducts() {
             try {
-                // Tambahkan parameter waktu (cache buster) agar selalu ambil file terbaru dari GitHub
                 const timestamp = new Date().getTime();
                 const response = await fetch(`products.json?v=${timestamp}`);
                 
@@ -86,11 +90,8 @@
                 products = await response.json();
             } catch (error) {
                 console.warn("Gagal load JSON utama, menggunakan data cadangan:", error);
-                // DATA CADANGAN JIKA TERJADI ERROR (Anti-Blank Screen)
                 products = [
-                    { id: "backup1", category: "Protein & Lauk", name: "Daging Sapi Segar", price: 125000, unit: "1 Kg", image: "https://placehold.co/400x400/ef4444/FFFFFF?text=Daging", description: "Cadangan" },
-                    { id: "backup2", category: "Sayuran Segar", name: "Kangkung Cabut", price: 3000, unit: "1 Ikat", image: "https://placehold.co/400x400/22c55e/FFFFFF?text=Kangkung", description: "Cadangan" },
-                    { id: "backup3", category: "Bumbu Dapur", name: "Bawang Merah", price: 35000, unit: "1 Kg", image: "https://placehold.co/400x400/9f1239/FFFFFF?text=Bawang", description: "Cadangan" }
+                    { id: "backup1", category: "Protein & Lauk", name: "Daging Sapi Segar", price: 125000, unit: "1 Kg", image: "https://placehold.co/400x400/ef4444/FFFFFF?text=Daging", description: "Cadangan" }
                 ];
             }
             renderProducts();
@@ -104,7 +105,6 @@
 
             const categories = [...new Set(products.map(p => p.category))];
 
-            // Render Tombol Menu Kategori
             categories.forEach(cat => {
                 const catId = cat.replace(/\s+/g, '-');
                 menu.innerHTML += `
@@ -114,7 +114,6 @@
                 `;
             });
 
-            // Render Produk per Kelompok
             categories.forEach(cat => {
                 const catId = cat.replace(/\s+/g, '-');
                 const catProducts = products.filter(p => p.category === cat);
