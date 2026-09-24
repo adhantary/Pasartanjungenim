@@ -21,13 +21,13 @@
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
     </style>
 </head>
-<!-- Warna background otomatis berubah: Abu-abu di HP, Hijau Gelap di Laptop -->
 <body class="bg-gray-50 lg:bg-[#205031] text-gray-800 lg:h-screen lg:overflow-hidden flex flex-col">
 
     <!-- HEADER: Solid di HP, Transparan di Laptop -->
-    <header class="bg-[#205031] lg:bg-transparent sticky lg:static top-0 z-50 shadow-md lg:shadow-none w-full">
+    <header class="bg-[#205031] lg:bg-transparent sticky lg:static top-0 z-40 shadow-md lg:shadow-none w-full">
         <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between lg:pt-6">
             <div class="flex items-center gap-3">
+                <!-- LOGO PASAR -->
                 <img src="./images/logo-pasar.jpeg" alt="Logo Pasar" class="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-white/30 bg-white shadow-sm" onerror="this.src='https://placehold.co/100x100/15803d/FFFFFF?text=PTE'">
                 <div>
                     <h1 class="text-lg lg:text-2xl font-bold tracking-tight leading-tight text-white">Pasar Tanjung Enim</h1>
@@ -42,18 +42,16 @@
         </div>
     </header>
 
-    <!-- KONTEN UTAMA: Berubah jadi 2 kolom di Laptop -->
+    <!-- KONTEN UTAMA: 2 Kolom di Laptop -->
     <main class="max-w-7xl mx-auto w-full flex-1 flex flex-col lg:flex-row lg:gap-10 lg:px-8 lg:py-6 lg:overflow-hidden">
         
-        <!-- ========================================== -->
         <!-- KOLOM KIRI (Hero & Pencarian untuk Desktop) -->
-        <!-- ========================================== -->
         <div class="hidden lg:flex lg:w-5/12 flex-col justify-center text-white pr-4">
             <span class="bg-white/10 text-green-50 px-4 py-1.5 rounded-full text-xs font-semibold border border-white/20 backdrop-blur-sm w-fit mb-6 shadow-sm">
                 🛵 Same-Day Delivery - Tanjung Enim & Sekitarnya
             </span>
             <h2 class="text-5xl xl:text-6xl font-extrabold mb-5 leading-[1.1]">Sayur Segar <br><span class="text-yellow-400">Diantar Hari Ini.</span></h2>
-            <p class="text-green-50/90 text-lg mb-8 leading-relaxed">Dipetik pagi ini, sampai di rumahmu sebelum sore - lebih fresh dari pasar, tanpa perlu keluar rumah. Harga mulai Rp3.000.</p>
+            <p class="text-green-50/90 text-lg mb-8 leading-relaxed">Dipetik pagi ini, sampai di rumahmu sebelum sore - lebih fresh dari pasar, tanpa perlu keluar rumah. Harga pasar, garansi segar!</p>
             
             <!-- Pencarian Desktop -->
             <div class="relative mb-10 shadow-lg">
@@ -69,9 +67,7 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
         <!-- MOBILE HERO (Hanya muncul di HP) -->
-        <!-- ========================================== -->
         <div class="lg:hidden bg-[#205031] text-white px-4 pt-2 pb-6 rounded-b-[2rem] shadow-sm mb-4">
             <h2 class="text-2xl font-extrabold mb-3 leading-tight">Sayur Segar <br><span class="text-yellow-400">Diantar Hari Ini.</span></h2>
             <div class="relative shadow-sm">
@@ -81,14 +77,11 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
         <!-- KOLOM KANAN (Katalog Produk & Cart) -->
-        <!-- ========================================== -->
-        <!-- Di Desktop: Kotak putih dengan rounded corner. Di HP: Menyatu dengan background -->
         <div class="lg:w-7/12 bg-gray-50 lg:bg-white lg:rounded-[2rem] lg:shadow-2xl flex flex-col h-full relative lg:border lg:border-gray-100">
             
             <!-- Kategori Menu (Sticky di atas) -->
-            <div class="bg-gray-50 lg:bg-white sticky top-0 z-40 lg:rounded-t-[2rem] border-b border-gray-200/80 px-4 py-3">
+            <div class="bg-gray-50 lg:bg-white sticky top-0 z-30 lg:rounded-t-[2rem] border-b border-gray-200/80 px-4 py-3">
                 <div id="category-menu" class="flex overflow-x-auto gap-2 no-scrollbar">
                     <!-- Menu Render Dinamis -->
                 </div>
@@ -97,7 +90,8 @@
             <!-- Area Scroll Produk -->
             <div class="flex-1 overflow-y-auto p-4 lg:p-6 no-scrollbar pb-36 lg:pb-32 relative" id="scroll-container">
                 <div id="product-container">
-                    <!-- Produk akan di-render di sini -->
+                    <!-- Loading Status awal -->
+                    <div class="text-center py-10 text-gray-500 font-medium">Memuat katalog pasar...</div>
                 </div>
 
                 <!-- FITUR ORDER CUSTOM -->
@@ -108,22 +102,21 @@
                     </div>
                     <p class="text-sm text-yellow-700/80 mb-3">Tulis barang yang ingin dibeli di luar etalase, kami bantu carikan di pasar.</p>
                     <textarea id="custom-order" rows="3" oninput="updateCartUI()" 
-                              placeholder="Misal: Daun pisang 2 ikat, Jengkol 1/2 kg..." 
+                              placeholder="Misal: Daun pisang 2 ikat, Jengkol 1/2 kg, Tepung Terigu 1kg..." 
                               class="w-full bg-white border border-yellow-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"></textarea>
                 </div>
             </div>
 
             <!-- STICKY BOTTOM CART -->
-            <!-- Di HP: Menempel di bawah layar. Di Desktop: Mengambang di dalam kotak putih -->
-            <div id="bottom-cart" class="fixed lg:absolute bottom-0 left-0 w-full z-50 hidden slide-up">
+            <div id="bottom-cart" class="fixed lg:absolute bottom-0 left-0 w-full z-40 hidden slide-up">
                 <div class="bg-white border-t lg:border border-gray-200 p-3 lg:p-4 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1)] lg:shadow-xl lg:rounded-2xl lg:m-4 flex justify-between items-center transition-all">
                     <div>
                         <p class="text-[11px] lg:text-xs text-gray-500 font-medium mb-0.5">Total Estimasi (<span id="cart-count">0</span> barang)</p>
                         <p class="text-lg lg:text-xl font-extrabold text-[#205031]" id="cart-total">Rp 0</p>
                         <p id="custom-notice" class="text-[10px] text-yellow-600 hidden leading-none mt-1">*Harga custom diinfokan admin</p>
                     </div>
-                    <!-- Tombol Pesan Sekarang ala Cikfresh -->
-                    <button onclick="checkoutWA()" class="bg-[#FFC107] hover:bg-yellow-500 text-green-950 font-extrabold py-2.5 px-6 lg:py-3 lg:px-8 rounded-xl lg:rounded-xl shadow-sm flex items-center gap-2 transition transform active:scale-95 text-sm lg:text-base">
+                    <!-- TOMBOL PESAN MEMANGGIL MODAL QRIS -->
+                    <button onclick="openQRIS()" class="bg-[#FFC107] hover:bg-yellow-500 text-green-950 font-extrabold py-2.5 px-6 lg:py-3 lg:px-8 rounded-xl lg:rounded-xl shadow-sm flex items-center gap-2 transition transform active:scale-95 text-sm lg:text-base">
                         Pesan Sekarang
                         <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     </button>
@@ -132,26 +125,72 @@
         </div>
     </main>
 
+    <!-- ============================================== -->
+    <!-- MODAL POP-UP QRIS -->
+    <!-- ============================================== -->
+    <div id="qris-modal" class="fixed inset-0 bg-black/70 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+        <div class="bg-white rounded-3xl w-full max-w-sm p-6 text-center shadow-2xl relative transform scale-95 transition-transform duration-300" id="qris-content">
+            <!-- Tombol Close Modal -->
+            <button onclick="closeQRIS()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 rounded-full p-1.5 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <h3 class="font-extrabold text-xl text-gray-800 mb-1 mt-2">Pembayaran QRIS</h3>
+            <p class="text-[12px] text-gray-500 mb-4 leading-tight">Scan kode QR di bawah ini menggunakan M-Banking atau e-Wallet (Gopay, Dana, Ovo, ShopeePay).</p>
+            
+            <!-- GAMBAR QRIS (Pastikan gambar qris-toko.jpg ada di folder images) -->
+            <div class="border-2 border-dashed border-green-200 rounded-2xl p-2 mb-4 bg-green-50 flex justify-center shadow-inner">
+                <img src="./images/qris-toko.jpg" alt="QRIS Pasar Tanjung Enim" class="w-48 h-48 object-contain rounded-xl" onerror="this.src='https://placehold.co/400x400/ffffff/205031?text=TARUH+FOTO+QRIS'">
+            </div>
+
+            <div class="bg-yellow-50 rounded-xl p-3 mb-5 border border-yellow-100">
+                <p class="text-[11px] text-yellow-800 font-semibold mb-0.5">Total yang harus dibayar:</p>
+                <p class="text-3xl font-black text-[#205031]" id="qris-total-price">Rp 0</p>
+            </div>
+
+            <!-- Tombol Checkout Lanjutan -->
+            <button onclick="checkoutWA('QRIS')" class="w-full bg-[#205031] hover:bg-green-800 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-green-900/20 transition flex justify-center items-center gap-2 text-sm mb-3 active:scale-95">
+                Sudah Bayar? Lanjut ke WA
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </button>
+            <button onclick="checkoutWA('COD')" class="w-full text-gray-500 hover:text-gray-800 font-semibold py-2 text-xs transition underline decoration-gray-300 underline-offset-4">
+                Bayar tunai di tempat (COD) saja
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCRIPT LOGIKA UTAMA -->
+    <!-- ============================================== -->
     <script>
         let products = [];
         let cart = {}; 
         let globalSearch = "";
+        let globalTotalPrice = 0; 
+
+        // ⚠️ PENTING: GANTI URL INI DENGAN URL WEB APP GOOGLE SCRIPT ANDA ⚠️
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvk9YrPI0juCTS_dzmmEzdsS0-hrpCKvPaCRtBdThlFkrFCvn7basirM7pK6PRpovK/exec'; 
 
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
+        // Fetch dari Google Sheets API
         async function fetchProducts() {
             try {
-                const timestamp = new Date().getTime();
-                const response = await fetch(`products.json?v=${timestamp}`);
-                if (!response.ok) throw new Error("Gagal load JSON");
+                const response = await fetch(SCRIPT_URL);
+                if (!response.ok) throw new Error("Gagal load API");
                 products = await response.json();
+                renderProducts();
             } catch (error) {
-                console.warn("Gagal load products.json");
+                console.error("Fetch Error:", error);
+                document.getElementById('product-container').innerHTML = `
+                    <div class="text-center py-10">
+                        <p class="text-red-500 font-bold mb-2">Gagal terhubung ke Database Google Sheets.</p>
+                        <p class="text-sm text-gray-500">Pastikan URL Web App sudah benar dan diset ke "Anyone" (Semua Orang).</p>
+                    </div>`;
             }
-            renderProducts();
         }
 
-        // Sinkronisasi input pencarian HP dan Desktop
+        // Sinkronisasi input pencarian
         function syncSearch(val) {
             globalSearch = val.toLowerCase();
             const desktop = document.getElementById('search-desktop');
@@ -161,6 +200,7 @@
             renderProducts();
         }
 
+        // Render Katalog
         function renderProducts() {
             const container = document.getElementById('product-container');
             const menu = document.getElementById('category-menu');
@@ -196,7 +236,6 @@
                 if (catProducts.length === 0) return;
                 hasResults = true;
 
-                // Grid responsif: 2 kolom (HP), 3 kolom (Tablet), 3/4 kolom (Laptop)
                 let html = `
                 <div id="${catId}" class="pt-6 pb-2 scroll-mt-24 border-b border-gray-200/60 border-dashed last:border-0">
                     <h2 class="text-lg lg:text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
@@ -245,6 +284,7 @@
             }
         }
 
+        // Logika Keranjang
         function updateQty(id, delta) {
             let current = cart[id] ? cart[id].qty : 0;
             setQty(id, current + delta);
@@ -270,12 +310,12 @@
 
         function updateCartUI() {
             let totalItem = 0;
-            let totalPrice = 0;
+            globalTotalPrice = 0;
             let customOrderText = document.getElementById('custom-order').value.trim();
 
             for (let id in cart) {
                 totalItem += cart[id].qty;
-                totalPrice += (cart[id].qty * cart[id].product.price);
+                globalTotalPrice += (cart[id].qty * cart[id].product.price);
             }
 
             const bottomCart = document.getElementById('bottom-cart');
@@ -284,7 +324,7 @@
             if (totalItem > 0 || customOrderText.length > 0) {
                 bottomCart.classList.remove('hidden');
                 document.getElementById('cart-count').innerText = totalItem > 0 ? totalItem : 'Custom';
-                document.getElementById('cart-total').innerText = formatRp(totalPrice);
+                document.getElementById('cart-total').innerText = formatRp(globalTotalPrice);
                 
                 if (customOrderText.length > 0) {
                     customNotice.classList.remove('hidden');
@@ -296,11 +336,39 @@
             }
         }
 
-        function checkoutWA() {
+        // Kontrol Modal QRIS
+        function openQRIS() {
+            const modal = document.getElementById('qris-modal');
+            const content = document.getElementById('qris-content');
+            document.getElementById('qris-total-price').innerText = formatRp(globalTotalPrice);
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeQRIS() {
+            const modal = document.getElementById('qris-modal');
+            const content = document.getElementById('qris-content');
+            
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Pembuatan Pesan WA
+        function checkoutWA(metodeBayar) {
             let customOrder = document.getElementById('custom-order').value.trim();
             if (Object.keys(cart).length === 0 && customOrder === "") return;
 
-            let pesan = "*Halo Pasar Tanjung Enim, saya mau order:*%0A%0A";
+            let pesan = `*Halo Pasar Tanjung Enim, saya mau order:*%0A%0A`;
             let total = 0;
             let hasCatalogItem = false;
 
@@ -322,16 +390,19 @@
             if (hasCatalogItem) {
                 pesan += `%0A*Total Estimasi Etalase: ${formatRp(total)}*`;
                 if (customOrder !== "") pesan += `%0A_(Total akhir menyusul setelah barang custom ditambahkan)_`;
-            } else {
-                 pesan += `%0A*(Total harga barang custom akan dihitung admin)*`;
             }
 
-            pesan += `%0A%0A*Kirim ke Alamat:*%0A(Tulis nama & alamat Anda di sini)%0A%0ATerima kasih!`;
+            // Status Pembayaran
+            pesan += `%0A%0A*Metode Pembayaran:* ${metodeBayar === 'QRIS' ? '✅ Sudah Bayar via QRIS (Bukti Transfer Terlampir)' : '💵 Bayar Tunai di Tempat (COD)'}`;
             
-            const nomorWA = "6281234567890"; // GANTI DENGAN NOMOR WA ANDA
+            pesan += `%0A%0A*Kirim ke Alamat:*%0A(Tulis nama & alamat lengkap Anda di sini)%0A%0ATerima kasih!`;
+            
+            // ⚠️ PENTING: GANTI NOMOR WA INI DENGAN NOMOR WA ADMIN TOKO ⚠️
+            const nomorWA = "62822188777466"; 
             window.open(`https://wa.me/${nomorWA}?text=${pesan}`, "_blank");
         }
 
+        // Eksekusi load data saat halaman dibuka
         fetchProducts();
     </script>
 </body>
