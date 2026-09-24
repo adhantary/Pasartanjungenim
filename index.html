@@ -14,7 +14,7 @@
         input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type="number"] { -moz-appearance: textfield; }
         
-        /* Sembunyikan scrollbar di menu kategori agar terlihat seperti aplikasi */
+        /* Sembunyikan scrollbar di menu kategori */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
@@ -32,7 +32,7 @@
                 <p class="text-xs text-green-100">Segar & Termurah setiap hari</p>
             </div>
         </div>
-        <!-- Kategori Menu (Bisa digeser horizontal) -->
+        <!-- Kategori Menu -->
         <div class="bg-white border-b border-gray-200">
             <div id="category-menu" class="max-w-md mx-auto px-3 py-3 flex overflow-x-auto gap-2 no-scrollbar">
                 <!-- Menu Kategori akan di-render di sini -->
@@ -42,7 +42,7 @@
 
     <!-- Kontainer Utama -->
     <main class="max-w-md mx-auto p-3">
-        <!-- Banner Promo Opsional -->
+        <!-- Banner Promo -->
         <div class="bg-yellow-400 rounded-xl p-3 mb-2 flex items-center justify-between shadow-sm">
             <span class="text-sm font-bold text-green-900">Diskon Ongkir se-Tanjung Enim!</span>
             <span class="bg-white text-green-800 text-xs font-bold px-2 py-1 rounded-full">Klaim</span>
@@ -78,11 +78,20 @@
 
         async function fetchProducts() {
             try {
-                const response = await fetch('products.json');
-                if (!response.ok) throw new Error("Gagal");
+                // Tambahkan parameter waktu (cache buster) agar selalu ambil file terbaru dari GitHub
+                const timestamp = new Date().getTime();
+                const response = await fetch(`products.json?v=${timestamp}`);
+                
+                if (!response.ok) throw new Error("Gagal mengambil data dari server");
                 products = await response.json();
             } catch (error) {
-                console.log("Error:", error);
+                console.warn("Gagal load JSON utama, menggunakan data cadangan:", error);
+                // DATA CADANGAN JIKA TERJADI ERROR (Anti-Blank Screen)
+                products = [
+                    { id: "backup1", category: "Protein & Lauk", name: "Daging Sapi Segar", price: 125000, unit: "1 Kg", image: "https://placehold.co/400x400/ef4444/FFFFFF?text=Daging", description: "Cadangan" },
+                    { id: "backup2", category: "Sayuran Segar", name: "Kangkung Cabut", price: 3000, unit: "1 Ikat", image: "https://placehold.co/400x400/22c55e/FFFFFF?text=Kangkung", description: "Cadangan" },
+                    { id: "backup3", category: "Bumbu Dapur", name: "Bawang Merah", price: 35000, unit: "1 Kg", image: "https://placehold.co/400x400/9f1239/FFFFFF?text=Bawang", description: "Cadangan" }
+                ];
             }
             renderProducts();
         }
@@ -93,12 +102,10 @@
             container.innerHTML = '';
             menu.innerHTML = '';
 
-            // Ambil semua kategori unik dari file JSON
             const categories = [...new Set(products.map(p => p.category))];
 
-            // Render Tombol Menu Kategori (Di bagian atas)
+            // Render Tombol Menu Kategori
             categories.forEach(cat => {
-                // Buat ID yang aman dari spasi (misal: "Protein & Lauk" jadi "Protein-&-Lauk")
                 const catId = cat.replace(/\s+/g, '-');
                 menu.innerHTML += `
                     <a href="#${catId}" class="px-4 py-1.5 bg-green-50 border border-green-200 text-green-800 text-sm font-semibold rounded-full whitespace-nowrap shadow-sm hover:bg-green-100 transition">
@@ -107,12 +114,11 @@
                 `;
             });
 
-            // Render Produk per Kelompok Kategori
+            // Render Produk per Kelompok
             categories.forEach(cat => {
                 const catId = cat.replace(/\s+/g, '-');
                 const catProducts = products.filter(p => p.category === cat);
                 
-                // Judul Kelompok (Lorong Kategori) - scroll-mt-32 mencegah judul tertutup header saat diklik
                 let html = `
                 <div id="${catId}" class="pt-6 pb-2 scroll-mt-32 border-b border-gray-200 border-dashed last:border-0">
                     <h2 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
