@@ -6,15 +6,13 @@
     <title>Pasar Tanjung Enim</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f3f4f6; padding-bottom: 90px; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; padding-bottom: 100px; }
         
-        /* Hilangkan panah di kolom angka */
         input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type="number"] { -moz-appearance: textfield; }
         
-        /* Sembunyikan scrollbar di menu kategori */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
@@ -24,54 +22,77 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Header (Warna Hijau Modern dengan Logo) -->
+    <!-- Header & Search Bar (Inspirasi Cikfresh) -->
     <header class="bg-green-700 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-3">
+        <div class="max-w-md mx-auto px-4 py-3">
+            <div class="flex items-center gap-3 mb-3">
                 <!-- Pemanggilan Logo Pasar -->
-                <img src="./images/logo-pasar.jpeg" alt="Logo Pasar" class="w-11 h-11 object-cover rounded-full border-2 border-white/50 bg-white shadow-sm">
-                
+                <img src="./images/logo-pasar.jpeg" alt="Logo Pasar" class="w-10 h-10 object-cover rounded-full border-2 border-white/30 bg-white shadow-sm" onerror="this.src='https://placehold.co/100x100/15803d/FFFFFF?text=PTE'">
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight leading-tight">Pasar Tanjung Enim</h1>
-                    <p class="text-[11px] text-green-100 mt-0.5">Segar & Termurah setiap hari</p>
+                    <h1 class="text-lg font-bold tracking-tight leading-tight">Pasar Tanjung Enim</h1>
+                    <p class="text-[11px] text-green-100 mt-0.5">Belanja Segar, Mudah & Murah</p>
                 </div>
             </div>
+            
+            <!-- Kolom Pencarian -->
+            <div class="relative">
+                <input type="text" id="search-input" onkeyup="renderProducts()" placeholder="Cari sayur, daging, bumbu..." 
+                       class="w-full bg-green-800/50 text-white placeholder-green-200/80 px-4 py-2.5 rounded-xl border border-green-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm font-medium transition">
+                <svg class="w-5 h-5 absolute right-3 top-2.5 text-green-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
         </div>
-        <!-- Kategori Menu -->
+
+        <!-- Kategori Menu (Swipeable) -->
         <div class="bg-white border-b border-gray-200">
             <div id="category-menu" class="max-w-md mx-auto px-3 py-3 flex overflow-x-auto gap-2 no-scrollbar">
-                <!-- Menu Kategori akan di-render di sini -->
+                <!-- Menu Render Dinamis -->
             </div>
         </div>
     </header>
 
     <!-- Kontainer Utama -->
     <main class="max-w-md mx-auto p-3">
-        <!-- Banner Promo -->
-        <div class="bg-yellow-400 rounded-xl p-3 mb-2 flex items-center justify-between shadow-sm">
-            <span class="text-sm font-bold text-green-900">Diskon Ongkir se-Tanjung Enim!</span>
-            <span class="bg-white text-green-800 text-xs font-bold px-2 py-1 rounded-full">Klaim</span>
+        <!-- Hero Banner Promo -->
+        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl p-4 mb-4 shadow-sm flex items-center justify-between border border-yellow-300">
+            <div>
+                <h2 class="text-base font-bold text-green-900 leading-tight">Gratis Ongkir!</h2>
+                <p class="text-xs text-green-800 font-medium mt-1">Khusus area Tanjung Enim</p>
+            </div>
+            <span class="bg-white text-green-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">Klaim Promo</span>
         </div>
 
         <!-- Katalog Produk -->
         <div id="product-container">
-            <!-- Produk yang dikelompokkan akan di-render di sini -->
+            <!-- Produk akan di-render di sini -->
+        </div>
+
+        <!-- FITUR BARU: Order Custom (Permintaan Khusus) -->
+        <div class="mt-6 bg-white rounded-2xl shadow-sm border border-gray-200 p-4 mb-4">
+            <div class="flex items-center gap-2 mb-2">
+                <span class="text-xl">📝</span>
+                <h3 class="font-bold text-gray-800">Tidak Nemu Barang?</h3>
+            </div>
+            <p class="text-xs text-gray-500 mb-3">Tulis barang yang ingin dibeli di luar etalase, kami bantu carikan di pasar.</p>
+            <textarea id="custom-order" rows="3" oninput="updateCartUI()" 
+                      placeholder="Misal: Daun pisang 2 ikat, Jengkol 1/2 kg, Tepung Terigu Segitiga Biru 1 kg..." 
+                      class="w-full bg-gray-50 border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition"></textarea>
         </div>
     </main>
 
     <!-- Sticky Bottom Cart -->
     <div id="bottom-cart" class="fixed bottom-0 left-0 right-0 z-50 hidden slide-up">
-        <div class="max-w-md mx-auto bg-white border-t border-gray-200 p-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-            <div class="flex justify-between items-center mb-2">
+        <div class="max-w-md mx-auto bg-white border-t border-gray-200 p-3 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)] rounded-t-2xl">
+            <div class="flex justify-between items-center mb-1">
                 <div>
-                    <p class="text-xs text-gray-500">Total Belanja (<span id="cart-count">0</span> barang)</p>
+                    <p class="text-xs text-gray-500 font-medium">Total Estimasi (<span id="cart-count">0</span> barang)</p>
                     <p class="text-lg font-bold text-green-700" id="cart-total">Rp 0</p>
                 </div>
-                <button onclick="checkoutWA()" class="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold py-2 px-6 rounded-lg shadow-sm flex items-center gap-2">
-                    Beli Sekarang
+                <button onclick="checkoutWA()" class="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold py-2.5 px-6 rounded-xl shadow-sm flex items-center gap-2 transition transform active:scale-95">
+                    Lanjut ke WA
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 </button>
             </div>
+            <p id="custom-notice" class="text-[10px] text-yellow-600 hidden">*Harga barang custom akan diinfokan admin</p>
         </div>
     </div>
 
@@ -86,13 +107,10 @@
                 const timestamp = new Date().getTime();
                 const response = await fetch(`products.json?v=${timestamp}`);
                 
-                if (!response.ok) throw new Error("Gagal mengambil data dari server");
+                if (!response.ok) throw new Error("Gagal load JSON");
                 products = await response.json();
             } catch (error) {
-                console.warn("Gagal load JSON utama, menggunakan data cadangan:", error);
-                products = [
-                    { id: "backup1", category: "Protein & Lauk", name: "Daging Sapi Segar", price: 125000, unit: "1 Kg", image: "https://placehold.co/400x400/ef4444/FFFFFF?text=Daging", description: "Cadangan" }
-                ];
+                console.warn("Gagal load JSON utama, pastikan file products.json tersedia.");
             }
             renderProducts();
         }
@@ -100,26 +118,46 @@
         function renderProducts() {
             const container = document.getElementById('product-container');
             const menu = document.getElementById('category-menu');
+            const searchKeyword = document.getElementById('search-input').value.toLowerCase();
+            
             container.innerHTML = '';
             menu.innerHTML = '';
 
             const categories = [...new Set(products.map(p => p.category))];
 
-            categories.forEach(cat => {
-                const catId = cat.replace(/\s+/g, '-');
-                menu.innerHTML += `
-                    <a href="#${catId}" class="px-4 py-1.5 bg-green-50 border border-green-200 text-green-800 text-sm font-semibold rounded-full whitespace-nowrap shadow-sm hover:bg-green-100 transition">
-                        ${cat}
-                    </a>
-                `;
-            });
+            // Render Tombol Menu Kategori (hanya jika sedang tidak mencari)
+            if (searchKeyword === "") {
+                categories.forEach(cat => {
+                    const catId = cat.replace(/\s+/g, '-');
+                    menu.innerHTML += `
+                        <a href="#${catId}" class="px-4 py-1.5 bg-green-50/80 border border-green-200 text-green-800 text-sm font-semibold rounded-full whitespace-nowrap shadow-sm hover:bg-green-100 transition">
+                            ${cat}
+                        </a>
+                    `;
+                });
+            } else {
+                menu.innerHTML = `<span class="px-4 py-1.5 text-green-800 text-sm font-semibold whitespace-nowrap">Hasil Pencarian: "${searchKeyword}"</span>`;
+            }
 
+            // Render Produk
+            let hasResults = false;
+            
             categories.forEach(cat => {
                 const catId = cat.replace(/\s+/g, '-');
-                const catProducts = products.filter(p => p.category === cat);
                 
+                // Filter berdasarkan kategori dan pencarian
+                let catProducts = products.filter(p => p.category === cat);
+                if (searchKeyword !== "") {
+                    catProducts = catProducts.filter(p => p.name.toLowerCase().includes(searchKeyword));
+                }
+                
+                // Jika tidak ada produk di kategori ini setelah disaring, lewati
+                if (catProducts.length === 0) return;
+                
+                hasResults = true;
+
                 let html = `
-                <div id="${catId}" class="pt-6 pb-2 scroll-mt-32 border-b border-gray-200 border-dashed last:border-0">
+                <div id="${catId}" class="pt-6 pb-2 scroll-mt-40 border-b border-gray-200 border-dashed last:border-0">
                     <h2 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
                         <span class="w-1.5 h-5 bg-green-600 rounded-full block"></span> ${cat}
                     </h2>
@@ -129,22 +167,22 @@
                 catProducts.forEach(p => {
                     const currentQty = cart[p.id] ? cart[p.id].qty : '';
                     html += `
-                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-                            <div class="relative">
-                                <img src="${p.image}" alt="${p.name}" class="w-full h-36 object-cover bg-gray-100">
+                        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col transition hover:shadow-md relative">
+                            <div class="aspect-square bg-gray-50 p-2">
+                                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/400x400/e2e8f0/94a3b8?text=Gambar+Kosong'">
                             </div>
                             <div class="p-3 flex flex-col flex-grow">
                                 <h3 class="text-sm font-semibold text-gray-800 leading-tight mb-1 line-clamp-2">${p.name}</h3>
-                                <p class="text-xs text-gray-500 mb-2">/ ${p.unit}</p>
+                                <p class="text-[11px] text-gray-500 font-medium mb-2">/ ${p.unit}</p>
                                 <p class="text-green-700 font-bold text-sm mt-auto mb-3">${formatRp(p.price)}</p>
                                 
-                                <div class="flex items-center justify-between border border-green-200 rounded-lg overflow-hidden bg-green-50">
-                                    <button onclick="updateQty('${p.id}', -1)" class="w-8 h-8 flex items-center justify-center text-green-700 font-bold hover:bg-green-200 transition">-</button>
+                                <div class="flex items-center justify-between border border-green-200 rounded-xl overflow-hidden bg-green-50 shadow-sm">
+                                    <button onclick="updateQty('${p.id}', -1)" class="w-8 h-8 flex items-center justify-center text-green-700 font-bold hover:bg-green-200 active:bg-green-300 transition">-</button>
                                     <input type="number" id="qty-${p.id}" 
                                            class="w-full h-8 text-center bg-transparent text-sm font-bold text-green-900 focus:outline-none" 
                                            placeholder="" value="${currentQty}" 
                                            onchange="manualQty('${p.id}', this.value)">
-                                    <button onclick="updateQty('${p.id}', 1)" class="w-8 h-8 flex items-center justify-center text-green-700 font-bold hover:bg-green-200 transition">+</button>
+                                    <button onclick="updateQty('${p.id}', 1)" class="w-8 h-8 flex items-center justify-center text-green-700 font-bold hover:bg-green-200 active:bg-green-300 transition">+</button>
                                 </div>
                             </div>
                         </div>
@@ -154,6 +192,15 @@
                 html += `</div></div>`;
                 container.innerHTML += html;
             });
+
+            if (!hasResults) {
+                container.innerHTML = `
+                    <div class="text-center py-10">
+                        <p class="text-gray-500 mb-2">Sayur/Barang tidak ditemukan.</p>
+                        <p class="text-sm text-green-700 font-semibold">Tulis saja di kolom pesanan custom di bawah!</p>
+                    </div>
+                `;
+            }
         }
 
         function updateQty(id, delta) {
@@ -182,6 +229,7 @@
         function updateCartUI() {
             let totalItem = 0;
             let totalPrice = 0;
+            let customOrderText = document.getElementById('custom-order').value.trim();
 
             for (let id in cart) {
                 totalItem += cart[id].qty;
@@ -189,31 +237,61 @@
             }
 
             const bottomCart = document.getElementById('bottom-cart');
-            if (totalItem > 0) {
+            const customNotice = document.getElementById('custom-notice');
+            
+            // Tampilkan cart jika ada barang di keranjang ATAU ada tulisan di kolom custom
+            if (totalItem > 0 || customOrderText.length > 0) {
                 bottomCart.classList.remove('hidden');
-                document.getElementById('cart-count').innerText = totalItem;
+                document.getElementById('cart-count').innerText = totalItem > 0 ? totalItem : 'Custom';
                 document.getElementById('cart-total').innerText = formatRp(totalPrice);
+                
+                // Munculkan tulisan peringatan jika ada pesanan custom
+                if (customOrderText.length > 0) {
+                    customNotice.classList.remove('hidden');
+                } else {
+                    customNotice.classList.add('hidden');
+                }
             } else {
                 bottomCart.classList.add('hidden');
             }
         }
 
         function checkoutWA() {
-            if (Object.keys(cart).length === 0) return;
+            let customOrder = document.getElementById('custom-order').value.trim();
+            if (Object.keys(cart).length === 0 && customOrder === "") return;
 
-            let pesan = "*Halo Pasar Tanjung Enim, saya mau pesan:*%0A%0A";
+            let pesan = "*Halo Pasar Tanjung Enim, saya mau order:*%0A%0A";
             let total = 0;
+            let hasCatalogItem = false;
 
-            for (let id in cart) {
-                let item = cart[id];
-                let subtotal = item.qty * item.product.price;
-                total += subtotal;
-                pesan += `${item.qty}x ${item.product.name} (${item.product.unit}) - ${formatRp(subtotal)}%0A`;
+            // Barang dari Etalase
+            if (Object.keys(cart).length > 0) {
+                pesan += "*Barang Etalase:*%0A";
+                for (let id in cart) {
+                    hasCatalogItem = true;
+                    let item = cart[id];
+                    let subtotal = item.qty * item.product.price;
+                    total += subtotal;
+                    pesan += `- ${item.qty}x ${item.product.name} (${item.product.unit}) : ${formatRp(subtotal)}%0A`;
+                }
             }
 
-            pesan += `%0A*Total Belanja: ${formatRp(total)}*%0A%0AAlamat Pengiriman:%0A(Tulis di sini)%0A%0AMohon info ongkir dan pembayarannya ya. Terima kasih!`;
+            // Barang Custom
+            if (customOrder !== "") {
+                pesan += `%0A*Barang Custom (Tolong dicarikan):*%0A${encodeURIComponent(customOrder)}%0A`;
+            }
+
+            // Total Keseluruhan
+            if (hasCatalogItem) {
+                pesan += `%0A*Total Estimasi Etalase: ${formatRp(total)}*`;
+                if (customOrder !== "") pesan += `%0A_(Total akhir menyusul setelah barang custom ditambahkan)_`;
+            } else {
+                 pesan += `%0A*(Total harga barang custom akan dihitung admin)*`;
+            }
+
+            pesan += `%0A%0A*Kirim ke Alamat:*%0A(Tulis nama & alamat Anda di sini)%0A%0ATerima kasih!`;
             
-            const nomorWA = "6282188777466"; // GANTI DENGAN NOMOR WA ANDA
+            const nomorWA = "6281234567890"; // GANTI DENGAN NOMOR WA ANDA
             window.open(`https://wa.me/${nomorWA}?text=${pesan}`, "_blank");
         }
 
