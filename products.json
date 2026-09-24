@@ -32,7 +32,7 @@
     "name": "Cabai Rawit Merah (Setan)",
     "price": 65000,
     "unit": "1 Kg",
-    "image": "images/cabai-setan",
+    "image": "images/cabai-setan.jpeg",
     "description": "Cabai rawit merah pedas nampol."
   },
   {
@@ -41,7 +41,7 @@
     "name": "Cabai Merah Keriting",
     "price": 45000,
     "unit": "1 Kg",
-    "image": "images/cabai-merah",
+    "image": "images/cabai-merah.jpeg",
     "description": "Cabai merah keriting segar."
   },
   {
