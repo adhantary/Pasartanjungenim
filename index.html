@@ -1,30 +1,275 @@
-[
-{
-"id": "p001",
-"name": "Kopi Bubuk Khas Tanjung Enim (250g)",
-"price": 35000,
-"image": "https://placehold.co/400x400/8B4513/FFFFFF?text=Kopi+Lokal",
-"description": "Kopi robusta pilihan asli dari petani lokal Tanjung Enim."
-},
-{
-"id": "p002",
-"name": "Kemplang Panggang Super",
-"price": 25000,
-"image": "https://placehold.co/400x400/FFA500/000000?text=Kemplang",
-"description": "Kerupuk ikan tenggiri panggang lengkap dengan sambal terasi."
-},
-{
-"id": "p003",
-"name": "Batik Motif Kujur",
-"price": 150000,
-"image": "https://placehold.co/400x400/4B0082/FFFFFF?text=Batik+Kujur",
-"description": "Kain batik dengan motif khas senjata tradisional Tanjung Enim."
-},
-{
-"id": "p004",
-"name": "Gula Merah Aren (1 Kg)",
-"price": 28000,
-"image": "https://placehold.co/400x400/A0522D/FFFFFF?text=Gula+Aren",
-"description": "Gula aren asli tanpa campuran, manis dan harum."
-}
-]
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasar Tanjung Enim - UMKM Lokal</title>
+    <!-- Menggunakan Tailwind CSS untuk styling yang cepat dan mobile-responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        /* Animasi sederhana saat barang masuk keranjang */
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .animate-pop { animation: pop 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-emerald-600 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-wide">Pasar Tanjung Enim</h1>
+            <div class="relative cursor-pointer" onclick="toggleCart()">
+                <!-- Icon Keranjang -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <!-- Badge Jumlah Item -->
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full transition-all">
+                    0
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto px-4 py-6 w-full">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Katalog Produk</h2>
+            <p class="text-sm text-gray-500">Dukung UMKM Lokal Tanjung Enim</p>
+        </div>
+
+        <!-- Grid Produk: 1 kolom di HP, 2 di tablet, 3-4 di Desktop -->
+        <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Loading state sederhana -->
+            <div class="col-span-full text-center py-10 text-gray-400" id="loading-message">
+                Memuat produk...
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 text-center py-4 mt-auto">
+        <p class="text-sm">&copy; 2026 Pasar Tanjung Enim. Bangga Buatan Lokal.</p>
+    </footer>
+
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex justify-end">
+        <div class="bg-white w-full max-w-sm h-full shadow-2xl flex flex-col transform transition-transform translate-x-full" id="cart-sidebar">
+            <div class="p-4 border-b flex justify-between items-center bg-emerald-50">
+                <h3 class="font-bold text-lg text-emerald-800">Keranjang Belanja</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-red-500 font-bold">&times; Tutup</button>
+            </div>
+            <div id="cart-items" class="p-4 flex-grow overflow-y-auto space-y-3">
+                <p class="text-gray-400 text-center text-sm mt-10">Keranjang masih kosong.</p>
+            </div>
+            <div class="p-4 border-t bg-gray-50">
+                <div class="flex justify-between font-bold text-lg mb-4">
+                    <span>Total:</span>
+                    <span id="cart-total">Rp 0</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-semibold transition-colors">
+                    Pesan Sekarang (WhatsApp)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management sederhana
+        let products = [];
+        let cart = [];
+        const no_wa_admin = "6281234567890"; // Ganti dengan nomor WA UMKM
+
+        // Fungsi Format Rupiah
+        const formatRupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        };
+
+        // 1. Memanggil Database Semu (JSON)
+        async function fetchProducts() {
+            try {
+                // Coba fetch dari file json (Berfungsi normal saat di-host di GitHub Pages)
+                const response = await fetch('products.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                products = await response.json();
+                renderProducts();
+            } catch (error) {
+                console.warn("Fetch gagal (karena mode Preview isolasi). Menggunakan data fallback:", error);
+                // Fallback data agar aplikasi tetap bisa diuji coba di mode Preview
+                products = [
+                    {
+                        "id": "p001",
+                        "name": "Kopi Bubuk Khas Tanjung Enim (250g)",
+                        "price": 35000,
+                        "image": "https://placehold.co/400x400/8B4513/FFFFFF?text=Kopi+Lokal",
+                        "description": "Kopi robusta pilihan asli dari petani lokal Tanjung Enim."
+                    },
+                    {
+                        "id": "p002",
+                        "name": "Kemplang Panggang Super",
+                        "price": 25000,
+                        "image": "https://placehold.co/400x400/FFA500/000000?text=Kemplang",
+                        "description": "Kerupuk ikan tenggiri panggang lengkap dengan sambal terasi."
+                    },
+                    {
+                        "id": "p003",
+                        "name": "Batik Motif Kujur",
+                        "price": 150000,
+                        "image": "https://placehold.co/400x400/4B0082/FFFFFF?text=Batik+Kujur",
+                        "description": "Kain batik dengan motif khas senjata tradisional Tanjung Enim."
+                    },
+                    {
+                        "id": "p004",
+                        "name": "Gula Merah Aren (1 Kg)",
+                        "price": 28000,
+                        "image": "https://placehold.co/400x400/A0522D/FFFFFF?text=Gula+Aren",
+                        "description": "Gula aren asli tanpa campuran, manis dan harum."
+                    }
+                ];
+                renderProducts();
+            }
+        }
+
+        // 2. Merender HTML Produk
+        function renderProducts() {
+            const container = document.getElementById('product-container');
+            container.innerHTML = ''; // Hapus loading message
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow";
+                
+                card.innerHTML = `
+                    <div class="aspect-w-1 aspect-h-1 w-full bg-gray-200">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/400x400/e2e8f0/1e293b?text=No+Image'">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-semibold text-gray-800 leading-tight mb-1">${product.name}</h3>
+                        <p class="text-xs text-gray-500 mb-2 line-clamp-2">${product.description}</p>
+                        <div class="mt-auto pt-2 flex items-center justify-between">
+                            <span class="font-bold text-emerald-600">${formatRupiah(product.price)}</span>
+                            <button onclick="addToCart('${product.id}')" class="bg-emerald-50 text-emerald-700 p-2 rounded-full hover:bg-emerald-600 hover:text-white transition-colors" title="Tambah ke Keranjang">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 3. Logika Keranjang Belanja
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            
+            // Animasi pop di badge
+            const badge = document.getElementById('cart-count');
+            badge.classList.remove('animate-pop');
+            void badge.offsetWidth; // trigger reflow
+            badge.classList.add('animate-pop');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Update Badge Count
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = totalItems;
+
+            // Update Sidebar List
+            const cartList = document.getElementById('cart-items');
+            const cartTotalEl = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                cartList.innerHTML = '<p class="text-gray-400 text-center text-sm mt-10">Keranjang masih kosong.</p>';
+                cartTotalEl.innerText = "Rp 0";
+                return;
+            }
+
+            cartList.innerHTML = '';
+            let grandTotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                grandTotal += itemTotal;
+
+                cartList.innerHTML += `
+                    <div class="flex items-center justify-between border-b pb-2">
+                        <div class="flex-grow">
+                            <h4 class="text-sm font-semibold text-gray-800 line-clamp-1">${item.name}</h4>
+                            <div class="text-xs text-gray-500 flex justify-between mt-1">
+                                <span>${item.qty} x ${formatRupiah(item.price)}</span>
+                                <span class="font-bold text-gray-700">${formatRupiah(itemTotal)}</span>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="ml-3 text-red-400 hover:text-red-600 text-xs">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                `;
+            });
+
+            cartTotalEl.innerText = formatRupiah(grandTotal);
+        }
+
+        // 4. UI Toggle Keranjang
+        function toggleCart() {
+            const overlay = document.getElementById('cart-overlay');
+            const sidebar = document.getElementById('cart-sidebar');
+            
+            if (overlay.classList.contains('hidden')) {
+                overlay.classList.remove('hidden');
+                // Timeout kecil agar transisi css bekerja
+                setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+            } else {
+                sidebar.classList.add('translate-x-full');
+                setTimeout(() => overlay.classList.add('hidden'), 300); // Sesuaikan dengan durasi transisi
+            }
+        }
+
+        // 5. Checkout via WhatsApp Serverless
+        function checkout() {
+            if (cart.length === 0) return alert('Keranjang belanja Anda masih kosong.');
+
+            let pesan = "Halo Admin Pasar Tanjung Enim, saya ingin memesan:\n\n";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                pesan += `${index + 1}. ${item.name} (${item.qty}x)\n   Subtotal: ${formatRupiah(item.price * item.qty)}\n`;
+                total += (item.price * item.qty);
+            });
+
+            pesan += `\n*Total Belanja: ${formatRupiah(total)}*\n\nMohon informasi ongkos kirim dan metode pembayaran. Terima kasih.`;
+            
+            // Konversi pesan text ke URL encoding agar aman dikirim ke WA
+            const urlWA = `https://wa.me/${no_wa_admin}?text=${encodeURIComponent(pesan)}`;
+            
+            // Buka di tab baru
+            window.open(urlWA, '_blank');
+        }
+
+        // Inisialisasi saat web dimuat
+        document.addEventListener('DOMContentLoaded', fetchProducts);
+    </script>
+</body>
+</html>
