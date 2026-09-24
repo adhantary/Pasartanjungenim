@@ -1,30 +1,34 @@
 [
   {
     "id": "p001",
-    "name": "Kopi Bubuk Khas Tanjung Enim (250g)",
-    "price": 35000,
-    "image": "https://placehold.co/400x400/8B4513/FFFFFF?text=Kopi+Lokal",
-    "description": "Kopi robusta pilihan asli dari petani lokal Tanjung Enim."
+    "name": "Daging Sapi Segar",
+    "price": 125000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Daging+Sapi",
+    "description": "Daging sapi segar harian kualitas terbaik."
   },
   {
     "id": "p002",
-    "name": "Kemplang Panggang Super",
-    "price": 25000,
-    "image": "https://placehold.co/400x400/FFA500/000000?text=Kemplang",
-    "description": "Kerupuk ikan tenggiri panggang lengkap dengan sambal terasi."
+    "name": "Bawang Merah Brebes",
+    "price": 35000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Bawang+Merah",
+    "description": "Bawang merah super, bersih dan kering."
   },
   {
     "id": "p003",
-    "name": "Batik Motif Kujur",
-    "price": 150000,
-    "image": "https://placehold.co/400x400/4B0082/FFFFFF?text=Batik+Kujur",
-    "description": "Kain batik dengan motif khas senjata tradisional Tanjung Enim."
+    "name": "Kopi Khas Tanjung Enim",
+    "price": 15000,
+    "unit": "250 Gram",
+    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Kopi+Lokal",
+    "description": "Kopi robusta petik merah."
   },
   {
     "id": "p004",
-    "name": "Gula Merah Aren (1 Kg)",
-    "price": 28000,
-    "image": "https://placehold.co/400x400/A0522D/FFFFFF?text=Gula+Aren",
-    "description": "Gula aren asli tanpa campuran, manis dan harum."
+    "name": "Sayur Bayam Cabut",
+    "price": 3000,
+    "unit": "1 Ikat",
+    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Bayam",
+    "description": "Bayam hijau segar langsung dari kebun."
   }
 ]
