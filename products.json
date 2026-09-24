@@ -1,42 +1,6 @@
 [
   {
     "id": "p001",
-    "category": "Protein & Lauk",
-    "name": "Daging Sapi Segar",
-    "price": 125000,
-    "unit": "1 Kg",
-    "image": "https://placehold.co/400x400/ef4444/FFFFFF?text=Daging+Sapi",
-    "description": "Daging sapi segar harian kualitas terbaik."
-  },
-  {
-    "id": "p002",
-    "category": "Protein & Lauk",
-    "name": "Ayam Potong Broiler",
-    "price": 38000,
-    "unit": "1 Ekor",
-    "image": "https://placehold.co/400x400/fb923c/FFFFFF?text=Ayam+Potong",
-    "description": "Ayam utuh segar, sudah dibersihkan."
-  },
-  {
-    "id": "p003",
-    "category": "Sayuran Segar",
-    "name": "Kangkung Cabut",
-    "price": 3000,
-    "unit": "1 Ikat",
-    "image": "https://placehold.co/400x400/22c55e/FFFFFF?text=Kangkung",
-    "description": "Kangkung hijau segar langsung dari kebun."
-  },
-  {
-    "id": "p004",
-    "category": "Sayuran Segar",
-    "name": "Kentang Dieng Super",
-    "price": 18000,
-    "unit": "1 Kg",
-    "image": "https://placehold.co/400x400/d97706/FFFFFF?text=Kentang",
-    "description": "Kentang ukuran besar, cocok untuk perkedel atau sayur."
-  },
-  {
-    "id": "p005",
     "category": "Bumbu Dapur",
     "name": "Bawang Merah Brebes",
     "price": 35000,
@@ -45,12 +9,264 @@
     "description": "Bawang merah super, bersih dan kering."
   },
   {
-    "id": "p006",
+    "id": "p002",
+    "category": "Bumbu Dapur",
+    "name": "Bawang Putih Kating",
+    "price": 40000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/f3f4f6/000000?text=Bawang+Putih",
+    "description": "Bawang putih kating wangi dan padat."
+  },
+  {
+    "id": "p003",
+    "category": "Bumbu Dapur",
+    "name": "Bawang Bombay",
+    "price": 25000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/b45309/FFFFFF?text=Bawang+Bombay",
+    "description": "Bawang bombay ukuran besar, segar."
+  },
+  {
+    "id": "p004",
+    "category": "Bumbu Dapur",
+    "name": "Cabai Rawit Merah (Setan)",
+    "price": 65000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/ef4444/FFFFFF?text=Cabai+Rawit",
+    "description": "Cabai rawit merah pedas nampol."
+  },
+  {
+    "id": "p005",
     "category": "Bumbu Dapur",
     "name": "Cabai Merah Keriting",
     "price": 45000,
     "unit": "1 Kg",
-    "image": "https://placehold.co/400x400/dc2626/FFFFFF?text=Cabai+Merah",
-    "description": "Cabai keriting segar dan pedas."
+    "image": "https://placehold.co/400x400/dc2626/FFFFFF?text=Cabai+Keriting",
+    "description": "Cabai merah keriting segar."
+  },
+  {
+    "id": "p006",
+    "category": "Bumbu Dapur",
+    "name": "Paket Rimpang (Jahe, Kunyit, Lengkuas, Kencur)",
+    "price": 10000,
+    "unit": "250 Gram",
+    "image": "https://placehold.co/400x400/a16207/FFFFFF?text=Rimpang",
+    "description": "Paket lengkap rimpang segar untuk bumbu dasar."
+  },
+  {
+    "id": "p007",
+    "category": "Bumbu Dapur",
+    "name": "Paket Daun Aromatik (Salam, Sereh, Daun Jeruk)",
+    "price": 5000,
+    "unit": "1 Ikat",
+    "image": "https://placehold.co/400x400/15803d/FFFFFF?text=Daun+Bumbu",
+    "description": "Daun bumbu segar untuk pewangi masakan."
+  },
+  {
+    "id": "p008",
+    "category": "Bumbu Dapur",
+    "name": "Gula Merah / Aren Asli",
+    "price": 28000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/78350f/FFFFFF?text=Gula+Merah",
+    "description": "Gula aren asli, manis dan harum."
+  },
+  {
+    "id": "p009",
+    "category": "Protein & Lauk Pauk",
+    "name": "Daging Sapi Segar (Has Dalam)",
+    "price": 135000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/b91c1c/FFFFFF?text=Daging+Sapi",
+    "description": "Daging sapi segar kualitas premium tanpa lemak."
+  },
+  {
+    "id": "p010",
+    "category": "Protein & Lauk Pauk",
+    "name": "Ayam Potong Broiler",
+    "price": 38000,
+    "unit": "1 Ekor",
+    "image": "https://placehold.co/400x400/fb923c/FFFFFF?text=Ayam+Broiler",
+    "description": "Ayam utuh segar, sudah dibersihkan."
+  },
+  {
+    "id": "p011",
+    "category": "Protein & Lauk Pauk",
+    "name": "Ayam Kampung",
+    "price": 65000,
+    "unit": "1 Ekor",
+    "image": "https://placehold.co/400x400/f59e0b/FFFFFF?text=Ayam+Kampung",
+    "description": "Ayam kampung asli, cocok untuk kaldu dan soto."
+  },
+  {
+    "id": "p012",
+    "category": "Protein & Lauk Pauk",
+    "name": "Ikan Lele Segar",
+    "price": 26000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/374151/FFFFFF?text=Ikan+Lele",
+    "description": "Ikan lele hidup segar, isi 6-8 ekor/kg."
+  },
+  {
+    "id": "p013",
+    "category": "Protein & Lauk Pauk",
+    "name": "Ikan Nila Merah",
+    "price": 35000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/f87171/FFFFFF?text=Ikan+Nila",
+    "description": "Ikan nila merah segar, sudah dibersihkan sisik."
+  },
+  {
+    "id": "p014",
+    "category": "Protein & Lauk Pauk",
+    "name": "Cumi-Cumi Segar",
+    "price": 75000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/a78bfa/FFFFFF?text=Cumi+Cumi",
+    "description": "Cumi segar ukuran sedang, tidak alot."
+  },
+  {
+    "id": "p015",
+    "category": "Protein & Lauk Pauk",
+    "name": "Udang Peci Ukuran Sedang",
+    "price": 85000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/fdba74/FFFFFF?text=Udang+Segar",
+    "description": "Udang segar dari tambak harian."
+  },
+  {
+    "id": "p016",
+    "category": "Protein & Lauk Pauk",
+    "name": "Tahu Putih / Tahu Bandung",
+    "price": 5000,
+    "unit": "1 Bungkus",
+    "image": "https://placehold.co/400x400/fef08a/000000?text=Tahu+Putih",
+    "description": "Tahu putih lembut, isi 10 kotak."
+  },
+  {
+    "id": "p017",
+    "category": "Protein & Lauk Pauk",
+    "name": "Tempe Kedelai Super",
+    "price": 7000,
+    "unit": "1 Papan",
+    "image": "https://placehold.co/400x400/d97706/FFFFFF?text=Tempe",
+    "description": "Tempe kedelai padat, kualitas murni."
+  },
+  {
+    "id": "p018",
+    "category": "Protein & Lauk Pauk",
+    "name": "Telur Ayam Negeri (Ras)",
+    "price": 28000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/fcd34d/000000?text=Telur+Ayam",
+    "description": "Telur ayam segar cangkang tebal."
+  },
+  {
+    "id": "p019",
+    "category": "Protein & Lauk Pauk",
+    "name": "Ikan Asin Teri Medan",
+    "price": 35000,
+    "unit": "250 Gram",
+    "image": "https://placehold.co/400x400/d1d5db/000000?text=Teri+Medan",
+    "description": "Teri medan kualitas super, putih dan bersih."
+  },
+  {
+    "id": "p020",
+    "category": "Sayur Mayur",
+    "name": "Bayam Cabut",
+    "price": 3000,
+    "unit": "1 Ikat",
+    "image": "https://placehold.co/400x400/22c55e/FFFFFF?text=Bayam",
+    "description": "Bayam hijau segar langsung dari kebun."
+  },
+  {
+    "id": "p021",
+    "category": "Sayur Mayur",
+    "name": "Kangkung Cabut",
+    "price": 3000,
+    "unit": "1 Ikat",
+    "image": "https://placehold.co/400x400/16a34a/FFFFFF?text=Kangkung",
+    "description": "Kangkung hijau segar rimbun."
+  },
+  {
+    "id": "p022",
+    "category": "Sayur Mayur",
+    "name": "Sawi Hijau (Caisim)",
+    "price": 4000,
+    "unit": "1 Ikat",
+    "image": "https://placehold.co/400x400/84cc16/FFFFFF?text=Sawi+Hijau",
+    "description": "Sawi hijau segar, cocok untuk mie atau tumis."
+  },
+  {
+    "id": "p023",
+    "category": "Sayur Mayur",
+    "name": "Kol / Kubis",
+    "price": 10000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/bbf7d0/000000?text=Kol+Kubis",
+    "description": "Kubis segar padat dan renyah."
+  },
+  {
+    "id": "p024",
+    "category": "Sayur Mayur",
+    "name": "Terong Ungu",
+    "price": 12000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/9333ea/FFFFFF?text=Terong+Ungu",
+    "description": "Terong ungu segar, mulus tanpa ulat."
+  },
+  {
+    "id": "p025",
+    "category": "Sayur Mayur",
+    "name": "Tomat Merah",
+    "price": 15000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/ef4444/FFFFFF?text=Tomat",
+    "description": "Tomat merah besar untuk sambal atau jus."
+  },
+  {
+    "id": "p026",
+    "category": "Sayur Mayur",
+    "name": "Kacang Panjang",
+    "price": 8000,
+    "unit": "1 Ikat",
+    "image": "https://placehold.co/400x400/4ade80/000000?text=Kacang+Panjang",
+    "description": "Kacang panjang segar, muda dan renyah."
+  },
+  {
+    "id": "p027",
+    "category": "Sayur Mayur",
+    "name": "Tauge (Kecambah)",
+    "price": 5000,
+    "unit": "250 Gram",
+    "image": "https://placehold.co/400x400/fef3c7/000000?text=Tauge",
+    "description": "Tauge segar, putih bersih."
+  },
+  {
+    "id": "p028",
+    "category": "Sayur Mayur",
+    "name": "Wortel Brastagi",
+    "price": 16000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/f97316/FFFFFF?text=Wortel",
+    "description": "Wortel ukuran besar, manis dan segar."
+  },
+  {
+    "id": "p029",
+    "category": "Sayur Mayur",
+    "name": "Kentang Dieng Super",
+    "price": 18000,
+    "unit": "1 Kg",
+    "image": "https://placehold.co/400x400/d97706/FFFFFF?text=Kentang",
+    "description": "Kentang ukuran besar, tidak mudah hancur."
+  },
+  {
+    "id": "p030",
+    "category": "Sayur Mayur",
+    "name": "Paket Sayur Asam / Lodeh",
+    "price": 8000,
+    "unit": "1 Paket",
+    "image": "https://placehold.co/400x400/10b981/FFFFFF?text=Sayur+Asam",
+    "description": "Paket komplit nangka, melinjo, labu, pepaya muda."
   }
 ]
