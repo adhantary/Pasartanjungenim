@@ -173,6 +173,24 @@
 
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
+        // Fungsi mengubah link Google Drive menjadi Direct Image Link
+function getDirectImageUrl(url) {
+    if (!url) return 'https://placehold.co/400x400/e2e8f0/94a3b8?text=No+Image';
+    
+    // Jika itu link Google Drive
+    if (url.includes('drive.google.com')) {
+        // Ekstrak ID dari URL (mengambil teks di antara /d/ dan /view)
+        const match = url.match(/\/d\/(.+?)\//);
+        if (match && match[1]) {
+            const fileId = match[1];
+            // Kembalikan format Direct Link
+            return `https://drive.google.com/uc?id=${fileId}`;
+        }
+    }
+    // Jika bukan link Drive (misal dari placeholder atau github), kembalikan apa adanya
+    return url;
+}
+        
         // Fetch dari Google Sheets API
         async function fetchProducts() {
             try {
