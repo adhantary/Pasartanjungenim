@@ -148,6 +148,20 @@
 
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
+        // Fungsi untuk mensterilkan teks dari script berbahaya (Mencegah XSS)
+function escapeHTML(str) {
+    if (typeof str !== 'string') return str;
+    return str.replace(/[&<>'"]/g, function(tag) {
+        const charsToReplace = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        };
+        return charsToReplace[tag] || tag;
+    });
+}
         // FUNGSI KONVERSI GAMBAR (GOOGLE DRIVE THUMBNAIL API)
         function getDirectImageUrl(url) {
             if (!url || typeof url !== 'string' || url.trim() === '') {
