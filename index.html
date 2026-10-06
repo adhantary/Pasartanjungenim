@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pasar Tanjung Enim - Sayur Segar Diantar Hari Ini</title>
+    <title>Emak Dhony - Pasar Tanjung Enim</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* CSS Reset untuk Input Number */
         input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type="number"] { -moz-appearance: textfield; }
         
-        /* Sembunyikan scrollbar tapi tetap bisa di-scroll secara fungsional */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Animasi Slide Up untuk Cart */
         .slide-up { animation: slideUp 0.3s ease-out forwards; }
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
     </style>
@@ -31,32 +28,33 @@
     <header class="bg-[#205031] lg:bg-transparent sticky lg:static top-0 z-40 shadow-md lg:shadow-none w-full">
         <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between lg:pt-6">
             <div class="flex items-center gap-3">
-                <img src="./images/logo-pasar.jpeg" alt="Logo Pasar" class="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-white/30 bg-white shadow-sm" onerror="this.src='https://placehold.co/100x100/15803d/FFFFFF?text=PTE'">
+                <img src="./images/logo-pasar.jpeg" alt="Logo Emak Dhony" class="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-white/30 bg-white shadow-sm" onerror="this.src='https://placehold.co/100x100/15803d/FFFFFF?text=ED'">
                 <div>
-                    <h1 class="text-lg lg:text-2xl font-bold tracking-tight leading-tight text-white">Pasar Tanjung Enim</h1>
-                    <p class="text-[11px] lg:text-sm text-green-100/80 mt-0.5">Belanja Segar, Mudah & Murah</p>
+                    <h1 class="text-lg lg:text-2xl font-bold tracking-tight leading-tight text-white">Emak Dhony</h1>
+                    <p class="text-[11px] lg:text-sm text-green-100/80 mt-0.5">Pasar Tanjung Enim</p>
                 </div>
             </div>
             
             <div class="hidden lg:flex gap-6 text-sm font-semibold text-white/90">
-                <a href="#" class="hover:text-yellow-400 transition">Katalog Produk</a>
-                <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Pasar%20Tanjung%20Enim,%20saya%20butuh%20bantuan..." target="_blank" class="hover:text-yellow-400 transition">Hubungi CS</a>
+                <a href="#" class="hover:text-yellow-400 transition">Katalog</a>
+                <button onclick="openSosmed()" class="hover:text-yellow-400 transition">Media Sosial</button>
+                <a href="https://wa.me/6281234567890?text=Halo%20Emak%20Dhony,%20saya%20butuh%20bantuan..." target="_blank" class="hover:text-yellow-400 transition">Hubungi CS</a>
             </div>
         </div>
     </header>
 
     <!-- ============================================== -->
-    <!-- KONTEN UTAMA (TERBAGI 2 DI DESKTOP) -->
+    <!-- KONTEN UTAMA -->
     <!-- ============================================== -->
     <main class="max-w-7xl mx-auto w-full flex-1 flex flex-col lg:flex-row lg:gap-10 lg:px-8 lg:py-6 lg:overflow-hidden">
         
-        <!-- KOLOM KIRI (Info Toko untuk Desktop) -->
+        <!-- KOLOM KIRI (Info Toko Desktop) -->
         <div class="hidden lg:flex lg:w-5/12 flex-col justify-center text-white pr-4">
             <span class="bg-white/10 text-green-50 px-4 py-1.5 rounded-full text-xs font-semibold border border-white/20 backdrop-blur-sm w-fit mb-6 shadow-sm">
                 🛵 Same-Day Delivery - Tanjung Enim & Sekitarnya
             </span>
             <h2 class="text-5xl xl:text-6xl font-extrabold mb-5 leading-[1.1]">Sayur Segar <br><span class="text-yellow-400">Diantar Hari Ini.</span></h2>
-            <p class="text-green-50/90 text-lg mb-8 leading-relaxed">Dipetik pagi ini, sampai di rumahmu sebelum sore - lebih fresh dari pasar, tanpa perlu keluar rumah. Harga pasar, garansi segar!</p>
+            <p class="text-green-50/90 text-lg mb-8 leading-relaxed">Pesan tanpa keluar rumah. Belanja sayur, daging, dan bumbu berkualitas dari pedagang pasar lokal terpercaya!</p>
             
             <div class="relative mb-10 shadow-lg">
                 <input type="text" id="search-desktop" oninput="syncSearch(this.value)" placeholder="Cari ayam, sayur, bawang..." 
@@ -65,89 +63,176 @@
             </div>
 
             <div class="flex gap-8 text-white border-t border-white/20 pt-8">
-                <div><h4 class="text-3xl font-extrabold text-yellow-400">1000+</h4><p class="text-xs text-green-100/70 mt-1 font-semibold tracking-wider">PELANGGAN</p></div>
-                <div><h4 class="text-3xl font-extrabold text-yellow-400">4.9⭐</h4><p class="text-xs text-green-100/70 mt-1 font-semibold tracking-wider">RATING</p></div>
-                <div><h4 class="text-3xl font-extrabold text-yellow-400">100%</h4><p class="text-xs text-green-100/70 mt-1 font-semibold tracking-wider">GARANSI SEGAR</p></div>
+                <div><h4 class="text-3xl font-extrabold text-yellow-400">10+</h4><p class="text-[10px] text-green-100/70 mt-1 font-semibold tracking-wider">UMKM TANJUNG ENIM</p></div>
+                <div><h4 class="text-3xl font-extrabold text-yellow-400">👍</h4><p class="text-[10px] text-green-100/70 mt-1 font-semibold tracking-wider">HARGA TERBAIK</p></div>
+                <div><h4 class="text-3xl font-extrabold text-yellow-400">100%</h4><p class="text-[10px] text-green-100/70 mt-1 font-semibold tracking-wider">GARANSI SEGAR</p></div>
             </div>
         </div>
 
-        <!-- MOBILE HERO (Hanya muncul di HP) -->
+        <!-- MOBILE HERO -->
         <div class="lg:hidden bg-[#205031] text-white px-4 pt-2 pb-6 rounded-b-[2rem] shadow-sm mb-4">
             <h2 class="text-2xl font-extrabold mb-3 leading-tight">Sayur Segar <br><span class="text-yellow-400">Diantar Hari Ini.</span></h2>
-            <div class="relative shadow-sm">
+            <div class="relative shadow-sm mb-3">
                 <input type="text" id="search-mobile" oninput="syncSearch(this.value)" placeholder="Cari sayur, daging, bumbu..." 
                        class="w-full bg-white/10 text-white placeholder-green-100/70 px-4 py-3 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm font-medium transition backdrop-blur-sm">
                 <svg class="w-5 h-5 absolute right-3 top-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
+            <!-- Fitur Navigasi Mini di HP -->
+            <div class="flex justify-between items-center px-1">
+                <button onclick="openSosmed()" class="text-[11px] font-medium text-yellow-400 underline decoration-yellow-600 underline-offset-4">Ikuti Media Sosial</button>
+                <div class="flex gap-2">
+                    <span class="text-[10px] bg-white/10 px-2 py-1 rounded-md">⭐ Harga Terbaik</span>
+                    <span class="text-[10px] bg-white/10 px-2 py-1 rounded-md">🛡️ 100% Garansi</span>
+                </div>
+            </div>
         </div>
 
-        <!-- KOLOM KANAN (Katalog, Scroll Menu, Cart, & Footer) -->
+        <!-- KOLOM KANAN (Katalog, Menu, Layanan & Cart) -->
         <div class="lg:w-7/12 bg-gray-50 lg:bg-white lg:rounded-[2rem] lg:shadow-2xl flex flex-col h-full relative lg:border lg:border-gray-100">
             
             <!-- Menu Filter Kategori Bergeser (Sticky) -->
-            <div class="bg-gray-50 lg:bg-white sticky top-0 z-30 lg:rounded-t-[2rem] border-b border-gray-200/80 px-4 py-3">
-                <div id="category-menu" class="flex overflow-x-auto gap-2 no-scrollbar">
-                    <!-- Tombol kategori dirender lewat JS -->
+            <div class="bg-gray-50 lg:bg-white sticky top-0 z-30 lg:rounded-t-[2rem] border-b border-gray-200/80 px-4 py-3 shadow-sm">
+                <div id="category-menu" class="flex overflow-x-auto gap-2 no-scrollbar scroll-smooth">
+                    <!-- JS Menu Dinamis -->
                 </div>
             </div>
             
-            <!-- Area Daftar Produk & Footer -->
+            <!-- Area Daftar Produk & Layanan -->
             <div class="flex-1 overflow-y-auto p-4 lg:p-6 no-scrollbar pb-36 lg:pb-32 relative" id="scroll-container">
+                
+                <!-- KOTAK INFORMASI LAYANAN & GARANSI (Baru) -->
+                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-xl">⏱️</span><p class="font-bold text-blue-900 text-sm">Jadwal Pengiriman</p></div>
+                        <ul class="text-[11.5px] text-blue-800 space-y-1.5 list-disc pl-5">
+                            <li>Pesanan <span class="font-bold">05:00 - 12:30</span> dikirim maksimal 2 jam setelah pembayaran.</li>
+                            <li>Pesanan <span class="font-bold">13:00 - 21:00</span> dikirim esok hari maksimal jam 09:00 pagi.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 border border-green-200 p-4 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-xl">🛡️</span><p class="font-bold text-green-900 text-sm">Standar Layanan & Garansi</p></div>
+                        <ul class="text-[11.5px] text-green-800 space-y-1.5 list-disc pl-5">
+                            <li><span class="font-bold">Refund 100%</span> jika produk rusak / Force Majeure (Bencana/Cuaca ekstrem).</li>
+                            <li>Standar Timbangan Pas, gratis bersihkan ikan/daging.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-2xl md:col-span-2">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-xl">🤝</span><p class="font-bold text-yellow-900 text-sm">Kerjasama Rumah Makan / Katering</p></div>
+                        <p class="text-[11.5px] text-yellow-800 ml-7">Melayani suplai rutin untuk usaha Anda. Dapatkan <span class="font-bold">Harga Khusus/Grosir</span> dengan minimal order total 10kg (Bisa akumulasi / campur produk).</p>
+                    </div>
+                </div>
+
+                <!-- Katalog Produk -->
                 <div id="product-container">
                     <div class="text-center py-10 text-gray-500 font-medium flex flex-col items-center justify-center">
                         <div class="w-8 h-8 border-4 border-green-200 border-t-[#205031] rounded-full animate-spin mb-3"></div>
-                        Memuat katalog pasar yang segar...
+                        Memuat etalase Emak Dhony...
                     </div>
                 </div>
 
-                <!-- Formulir Pesanan Custom (Manual) -->
-                <div class="mt-8 bg-yellow-50 rounded-2xl border border-yellow-200 p-5 mb-8">
+                <!-- Formulir Pesanan Custom -->
+                <div class="mt-8 bg-gray-100 rounded-2xl border border-gray-200 p-5 mb-8">
                     <div class="flex items-center gap-2 mb-2">
                         <span class="text-xl">📝</span>
-                        <h3 class="font-bold text-yellow-900 text-lg">Tidak Nemu Barang?</h3>
+                        <h3 class="font-bold text-gray-800 text-lg">Tidak Nemu Barang?</h3>
                     </div>
-                    <p class="text-sm text-yellow-700/80 mb-3">Tulis barang yang ingin dibeli di luar etalase, kami bantu carikan di pasar.</p>
+                    <p class="text-sm text-gray-500 mb-3">Tulis barang yang ingin dibeli di luar etalase, kami bantu carikan di pasar.</p>
                     <textarea id="custom-order" rows="3" oninput="updateCartUI()" 
-                              placeholder="Misal: Daun pisang 2 ikat, Jengkol 1/2 kg, Minyak Goreng 1L..." 
-                              class="w-full bg-white border border-yellow-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"></textarea>
+                              placeholder="Misal: Daun pisang 2 ikat, Jengkol 1/2 kg..." 
+                              class="w-full bg-white border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#205031] transition"></textarea>
                 </div>
 
-                <!-- FOOTER LEGALITAS & INFO TOKO -->
+                <!-- FOOTER LEGALITAS -->
                 <footer class="mt-12 mb-8 border-t border-gray-200/60 pt-8 pb-4 text-center">
-                    <div class="flex justify-center gap-4 mb-4 text-xs font-semibold text-[#205031]">
-                        <a href="#" class="hover:text-yellow-500 transition">Syarat & Ketentuan</a>
-                        <span class="text-gray-300">•</span>
-                        <a href="#" class="hover:text-yellow-500 transition">Kebijakan Privasi</a>
-                        <span class="text-gray-300">•</span>
-                        <a href="#" class="hover:text-yellow-500 transition">Cara Belanja</a>
-                    </div>
                     <p class="text-[10px] text-gray-400 max-w-xs mx-auto leading-relaxed mb-4">
-                        Data nama dan alamat Anda hanya digunakan untuk keperluan pengiriman pesanan. Kami berkomitmen menjaga privasi pelanggan sesuai ketentuan yang berlaku.
+                        Data nama dan alamat Anda hanya digunakan untuk keperluan pengiriman pesanan. Kami berkomitmen menjaga privasi pelanggan.
                     </p>
                     <p class="text-[11px] text-gray-500 font-medium">
-                        &copy; 2026 Pasar Tanjung Enim. Dikelola oleh UMKM Lokal.
+                        &copy; 2026 Emak Dhony - Pasar Tanjung Enim. Dikelola oleh UMKM Lokal.
                     </p>
                 </footer>
             </div>
 
-            <!-- Panel Bawah Keranjang (Cart) -->
+            <!-- PANEL BAWAH (STICKY CART) -->
             <div id="bottom-cart" class="fixed lg:absolute bottom-0 left-0 w-full z-40 hidden slide-up">
                 <div class="bg-white border-t lg:border border-gray-200 p-3 lg:p-4 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1)] lg:shadow-xl lg:rounded-2xl lg:m-4 flex justify-between items-center transition-all">
                     <div>
                         <p class="text-[11px] lg:text-xs text-gray-500 font-medium mb-0.5">Total Estimasi (<span id="cart-count">0</span> barang)</p>
                         <p class="text-lg lg:text-xl font-extrabold text-[#205031]" id="cart-total">Rp 0</p>
-                        <p id="custom-notice" class="text-[10px] text-yellow-600 hidden leading-none mt-1">*Harga custom & ongkir diinfokan admin</p>
                     </div>
                     
-                    <!-- LANGSUNG KE WHATSAPP (Tanpa Modal QRIS) -->
-                    <button onclick="checkoutWA()" class="bg-[#FFC107] hover:bg-yellow-500 text-green-950 font-extrabold py-2.5 px-6 lg:py-3 lg:px-8 rounded-xl lg:rounded-xl shadow-sm flex items-center gap-2 transition transform active:scale-95 text-sm lg:text-base">
-                        Pesan Sekarang
-                        <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <!-- Tombol Cek Keranjang Membuka Modal -->
+                    <button onclick="openCartModal()" class="bg-[#FFC107] hover:bg-yellow-500 text-green-950 font-extrabold py-2.5 px-6 lg:py-3 lg:px-8 rounded-xl lg:rounded-xl shadow-sm flex items-center gap-2 transition transform active:scale-95 text-sm lg:text-base">
+                        Cek Keranjang
                     </button>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- ============================================== -->
+    <!-- MODAL CEK KERANJANG (BARU) -->
+    <!-- ============================================== -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/70 z-[60] hidden flex justify-center items-end lg:items-center p-0 lg:p-4 backdrop-blur-sm transition-opacity opacity-0">
+        <div class="bg-white rounded-t-3xl lg:rounded-3xl w-full max-w-md p-6 max-h-[85vh] flex flex-col shadow-2xl relative transform translate-y-full lg:translate-y-0 lg:scale-95 transition-transform duration-300" id="cart-content">
+            
+            <button onclick="closeCartModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 rounded-full p-1.5 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <h3 class="font-extrabold text-xl text-gray-800 mb-1">Keranjang Belanja</h3>
+            <p class="text-xs text-gray-500 mb-4 pb-3 border-b border-gray-100">Cek kembali barang bawaan Anda.</p>
+            
+            <!-- Daftar Barang (Scrollable) -->
+            <div id="cart-items-wrapper" class="flex-1 overflow-y-auto no-scrollbar mb-4 space-y-2">
+                <!-- Data Keranjang diisi oleh JS -->
+            </div>
+
+            <!-- Bagian Bawah Modal Keranjang -->
+            <div class="border-t border-gray-200 pt-4">
+                <div class="flex justify-between items-center mb-4 bg-yellow-50 p-3 rounded-xl border border-yellow-100">
+                    <div>
+                        <span class="text-[11px] font-semibold text-yellow-800 block mb-0.5">Total Estimasi Harga:</span>
+                        <span class="text-2xl font-black text-[#205031]" id="cart-modal-total">Rp 0</span>
+                    </div>
+                </div>
+                
+                <button onclick="checkoutWA()" class="w-full bg-[#205031] hover:bg-green-800 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-green-900/20 transition flex justify-center items-center gap-2 text-sm active:scale-95">
+                    Kirim Pesanan ke WA Emak
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MODAL MEDIA SOSIAL (BARU) -->
+    <!-- ============================================== -->
+    <div id="sosmed-modal" class="fixed inset-0 bg-black/70 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0">
+        <div class="bg-white rounded-3xl w-full max-w-sm p-6 text-center shadow-2xl relative transform scale-95 transition-transform duration-300" id="sosmed-content">
+            <button onclick="closeSosmed()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 rounded-full p-1.5 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <h3 class="font-extrabold text-xl text-gray-800 mb-2 mt-2">Ikuti Emak Dhony!</h3>
+            <p class="text-[12px] text-gray-500 mb-6 leading-tight">Dapatkan info diskon, harga terbaru, dan keseruan aktivitas pasar di media sosial kami.</p>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <!-- GANTI LINK HREF DI BAWAH DENGAN LINK SOSMED ASLI ANDA -->
+                <a href="#" target="_blank" class="bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 p-3 rounded-xl font-bold flex flex-col items-center gap-1 transition">
+                    <span class="text-2xl">📸</span> Instagram
+                </a>
+                <a href="#" target="_blank" class="bg-black hover:bg-gray-800 text-white p-3 rounded-xl font-bold flex flex-col items-center gap-1 transition">
+                    <span class="text-2xl">🎵</span> TikTok
+                </a>
+                <a href="#" target="_blank" class="bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 p-3 rounded-xl font-bold flex flex-col items-center gap-1 transition">
+                    <span class="text-2xl">📘</span> Facebook
+                </a>
+                <a href="#" target="_blank" class="bg-gray-100 hover:bg-gray-200 border border-gray-300 text-gray-800 p-3 rounded-xl font-bold flex flex-col items-center gap-1 transition">
+                    <span class="text-2xl">🧵</span> Threads
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- ============================================== -->
     <!-- SCRIPT LOGIKA JAVASCRIPT -->
@@ -158,19 +243,17 @@
         let globalSearch = "";
         let globalTotalPrice = 0; 
 
-        // ⚠️ PENTING 1: GANTI DENGAN URL WEB APP GOOGLE SCRIPT ANDA DI SINI ⚠️
+        // ⚠️ PENTING 1: GANTI URL WEB APP GOOGLE SCRIPT ANDA DI SINI ⚠️
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvk9YrPI0juCTS_dzmmEzdsS0-hrpCKvPaCRtBdThlFkrFCvn7basirM7pK6PRpovK/exec'; 
         
-        // ⚠️ PENTING 2: KUNCI RAHASIA UNTUK KEAMANAN API ⚠️
+        // ⚠️ PENTING 2: KUNCI RAHASIA API ⚠️
         const API_KEY = "pasar-tanjung-enim-2026-aman";
         
-        // ⚠️ PENTING 3: NOMOR WHATSAPP TOKO (GANTI DENGAN NOMOR ASLI) ⚠️
-        const NOMOR_WA_TOKO = "6282188777466";
+        // ⚠️ PENTING 3: NOMOR WHATSAPP EMAK DHONY ⚠️
+        const NOMOR_WA_TOKO = "6281234567890";
 
-        // Fitur Pemformat Rupiah
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
-        // [FITUR KEAMANAN] Sanitasi Teks (Mencegah serangan XSS)
         function escapeHTML(str) {
             if (typeof str !== 'string') return str;
             return str.replace(/[&<>'"]/g, function(tag) {
@@ -179,7 +262,6 @@
             });
         }
 
-        // [FITUR KONVERSI GAMBAR] Otomatis membaca link Google Drive & meminimalkan resolusi
         function getDirectImageUrl(url) {
             if (!url || typeof url !== 'string' || url.trim() === '') {
                 return 'https://placehold.co/400x400/e2e8f0/94a3b8?text=Gambar+Kosong';
@@ -187,14 +269,12 @@
             if (url.includes('drive.google.com')) {
                 let match = url.match(/\/d\/(.+?)\//);
                 if (match && match[1]) return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w400`;
-                
                 match = url.match(/id=([a-zA-Z0-9_-]+)/);
                 if (match && match[1]) return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w400`;
             }
             return url;
         }
 
-        // [FITUR PENGAMBILAN DATA] Fetch dari Google Sheets dengan LocalStorage Cache
         async function fetchProducts() {
             const cachedData = localStorage.getItem('pasarTanjungEnimCache');
             if (cachedData) {
@@ -205,7 +285,7 @@
             try {
                 const finalUrl = SCRIPT_URL + "?key=" + API_KEY + "&nocache=" + new Date().getTime();
                 const response = await fetch(finalUrl);
-                if (!response.ok) throw new Error("Koneksi gagal ke server Google");
+                if (!response.ok) throw new Error("Koneksi gagal");
                 
                 const newData = await response.json();
                 if(newData.error) throw new Error(newData.error);
@@ -213,20 +293,17 @@
                 products = newData;
                 localStorage.setItem('pasarTanjungEnimCache', JSON.stringify(products));
                 renderProducts();
-                
             } catch (error) {
-                console.error("Kesalahan Keamanan atau Jaringan:", error);
+                console.error("Kesalahan Jaringan:", error);
                 if (!cachedData) {
                     document.getElementById('product-container').innerHTML = `
                         <div class="text-center py-10 bg-red-50 rounded-2xl border border-red-200 mt-4 mx-4 lg:mx-0">
                             <p class="text-red-700 font-bold mb-2">Gagal Terhubung ke Database.</p>
-                            <p class="text-xs text-red-500 max-w-xs mx-auto">Pastikan API Key sudah cocok dan Google Sheets berstatus Publik (Anyone). Cek Console Log untuk detail error.</p>
                         </div>`;
                 }
             }
         }
 
-        // Fungsi Sinkronisasi Kotak Pencarian
         function syncSearch(val) {
             globalSearch = val.toLowerCase();
             const desktop = document.getElementById('search-desktop');
@@ -236,7 +313,6 @@
             renderProducts();
         }
 
-        // Fungsi Membangun Ulang Daftar Produk HTML
         function renderProducts() {
             const container = document.getElementById('product-container');
             const menu = document.getElementById('category-menu');
@@ -246,12 +322,12 @@
 
             const categories = [...new Set(products.map(p => p.category))];
 
-            // Render Navigasi Kategori
             if (globalSearch === "") {
                 categories.forEach(cat => {
                     const cleanCat = escapeHTML(cat); 
                     const catId = cleanCat.replace(/\s+/g, '-');
-                    menuHTML += `<a href="#${catId}" class="px-4 py-1.5 bg-green-50 lg:bg-gray-100 border border-green-200 lg:border-gray-200 text-[#205031] text-sm font-semibold rounded-full whitespace-nowrap shadow-sm hover:bg-green-100 transition">${cleanCat}</a>`;
+                    // Ditambahkan class 'category-link' untuk fitur Scroll Spy
+                    menuHTML += `<a href="#${catId}" class="category-link px-4 py-1.5 bg-green-50 lg:bg-gray-100 border border-green-200 lg:border-gray-200 text-[#205031] text-sm font-semibold rounded-full whitespace-nowrap shadow-sm transition">${cleanCat}</a>`;
                 });
             } else {
                 menuHTML = `<span class="px-4 py-1.5 text-[#205031] text-sm font-bold whitespace-nowrap">Hasil Pencarian: "${escapeHTML(globalSearch)}"</span>`;
@@ -271,8 +347,9 @@
                 if (catProducts.length === 0) return;
                 hasResults = true;
 
+                // Ditambahkan class 'category-section' untuk diamati (Observe) Scroll Spy
                 productHTML += `
-                <div id="${catId}" class="pt-6 pb-2 scroll-mt-24 border-b border-gray-200/60 border-dashed last:border-0">
+                <div id="${catId}" class="category-section pt-6 pb-2 scroll-mt-24 border-b border-gray-200/60 border-dashed last:border-0">
                     <h2 class="text-lg lg:text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
                         <span class="w-1.5 h-5 bg-[#205031] rounded-full block"></span> ${cleanCat}
                     </h2>
@@ -318,9 +395,44 @@
 
             menu.innerHTML = menuHTML;
             container.innerHTML = productHTML;
+
+            // Mengaktifkan Fitur Scroll-Spy setelah produk selesai dicetak ke layar
+            if (globalSearch === "") { initScrollSpy(); }
         }
 
-        // Fungsi Pengaturan Keranjang
+        // [FITUR BARU] Scroll-Spy: Deteksi kategori mana yang sedang dibaca dan ubah warna menu otomatis
+        function initScrollSpy() {
+            const sections = document.querySelectorAll('.category-section');
+            const navLinks = document.querySelectorAll('.category-link');
+            const menuContainer = document.getElementById('category-menu');
+
+            // Set area observasi layar
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            // Kembalikan ke warna Hijau Default
+                            link.classList.remove('bg-yellow-400', 'text-green-950', 'border-yellow-400');
+                            link.classList.add('bg-green-50', 'lg:bg-gray-100', 'text-[#205031]', 'border-green-200');
+                            
+                            // Jika cocok, ubah jadi Kuning Menyala
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.remove('bg-green-50', 'lg:bg-gray-100', 'text-[#205031]', 'border-green-200');
+                                link.classList.add('bg-yellow-400', 'text-green-950', 'border-yellow-400');
+                                
+                                // Geser posisi scroll menu horizontal otomatis (Auto-center menu)
+                                const linkRect = link.getBoundingClientRect();
+                                const menuRect = menuContainer.getBoundingClientRect();
+                                menuContainer.scrollLeft = link.offsetLeft - (menuRect.width / 2) + (linkRect.width / 2);
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-15% 0px -75% 0px' });
+
+            sections.forEach(sec => observer.observe(sec));
+        }
+
         function updateQty(id, delta) {
             let current = cart[id] ? cart[id].qty : 0;
             setQty(id, current + delta);
@@ -348,7 +460,6 @@
             updateCartUI();
         }
 
-        // Mengkalkulasi Ulang Harga di Panel Cart
         function updateCartUI() {
             let totalItem = 0;
             globalTotalPrice = 0;
@@ -361,58 +472,134 @@
             }
 
             const bottomCart = document.getElementById('bottom-cart');
-            const customNotice = document.getElementById('custom-notice');
             
             if (totalItem > 0 || customOrderText.length > 0) {
                 bottomCart.classList.remove('hidden');
                 document.getElementById('cart-count').innerText = totalItem > 0 ? totalItem : 'Custom';
                 document.getElementById('cart-total').innerText = formatRp(globalTotalPrice);
-                if (customOrderText.length > 0) customNotice.classList.remove('hidden');
-                else customNotice.classList.add('hidden');
             } else {
                 bottomCart.classList.add('hidden');
             }
         }
 
-        // LANGSUNG MENUJU WHATSAPP (Tanpa Modal QRIS)
+        // ==============================================
+        // KONTROL MODAL CEK KERANJANG
+        // ==============================================
+        function openCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const content = document.getElementById('cart-content');
+            const wrapper = document.getElementById('cart-items-wrapper');
+            const totalEl = document.getElementById('cart-modal-total');
+            
+            wrapper.innerHTML = ''; // Kosongkan list sebelumnya
+            
+            // Masukkan Barang Etalase ke Modal
+            for (let id in cart) {
+                let item = cart[id];
+                let subtotal = item.qty * item.product.price;
+                wrapper.innerHTML += `
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl border border-gray-100">
+                        <div class="flex-1 pr-3">
+                            <h4 class="text-sm font-bold text-gray-800 leading-tight line-clamp-1">${escapeHTML(item.product.name)}</h4>
+                            <p class="text-xs text-gray-500 mt-1">${item.qty} ${escapeHTML(item.product.unit)} x ${formatRp(item.product.price)}</p>
+                        </div>
+                        <span class="font-bold text-[#205031] text-sm whitespace-nowrap">${formatRp(subtotal)}</span>
+                    </div>
+                `;
+            }
+            
+            // Masukkan Barang Custom ke Modal
+            let customText = document.getElementById('custom-order').value.trim();
+            if (customText !== '') {
+                wrapper.innerHTML += `
+                    <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-200 mt-2">
+                        <h4 class="text-xs font-bold text-yellow-900 mb-1">📝 Barang Tambahan (Custom):</h4>
+                        <p class="text-xs text-yellow-800 italic break-words">${escapeHTML(customText)}</p>
+                        <p class="text-[10px] text-yellow-700 mt-1">*Harga akhir akan dikonfirmasi Admin Emak.</p>
+                    </div>
+                `;
+            }
+            
+            totalEl.innerText = formatRp(globalTotalPrice);
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('translate-y-full', 'lg:scale-95');
+                content.classList.add('translate-y-0', 'lg:scale-100');
+            }, 10);
+        }
+
+        function closeCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const content = document.getElementById('cart-content');
+            modal.classList.add('opacity-0');
+            content.classList.remove('translate-y-0', 'lg:scale-100');
+            content.classList.add('translate-y-full', 'lg:scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        // ==============================================
+        // KONTROL MODAL MEDIA SOSIAL
+        // ==============================================
+        function openSosmed() {
+            const modal = document.getElementById('sosmed-modal');
+            const content = document.getElementById('sosmed-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeSosmed() {
+            const modal = document.getElementById('sosmed-modal');
+            const content = document.getElementById('sosmed-content');
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        // ==============================================
+        // CHECKOUT WHATSAPP
+        // ==============================================
         function checkoutWA() {
             let rawCustomOrder = document.getElementById('custom-order').value.trim();
             let customOrder = escapeHTML(rawCustomOrder);
             
             if (Object.keys(cart).length === 0 && customOrder === "") return;
 
-            let pesan = `*Halo Pasar Tanjung Enim, saya mau order:*%0A%0A`;
+            let pesan = `*Halo Emak Dhony, saya mau order:*%0A%0A`;
             let total = 0;
             let hasCatalogItem = false;
 
             if (Object.keys(cart).length > 0) {
-                pesan += "*Barang Etalase:*%0A";
+                pesan += "*🛒 Daftar Belanjaan:*%0A";
                 for (let id in cart) {
                     hasCatalogItem = true;
                     let item = cart[id];
                     let subtotal = item.qty * item.product.price;
                     total += subtotal;
-                    pesan += `- ${item.qty}x ${escapeHTML(item.product.name)} (${escapeHTML(item.product.unit)}) : ${formatRp(subtotal)}%0A`;
+                    pesan += `- ${item.qty} ${escapeHTML(item.product.unit)} x ${escapeHTML(item.product.name)} = ${formatRp(subtotal)}%0A`;
                 }
             }
 
             if (customOrder !== "") {
-                pesan += `%0A*Barang Custom:*%0A${encodeURIComponent(customOrder)}%0A`;
+                pesan += `%0A*📝 Barang Tambahan (Titip Belanja):*%0A${encodeURIComponent(customOrder)}%0A`;
             }
 
             if (hasCatalogItem) {
                 pesan += `%0A*Total Estimasi Etalase: ${formatRp(total)}*`;
             }
 
-            // Pesan Tambahan Konfirmasi Admin
-            pesan += `%0A%0A_Mohon konfirmasi ketersediaan barang dan total tagihan akhir (termasuk ongkir)._`;
-            
-            pesan += `%0A%0A*Kirim ke Alamat:*%0A(Tulis nama & alamat lengkap di sini)%0A%0ATerima kasih!`;
+            pesan += `%0A%0A_Mohon konfirmasi ketersediaan barang dan total tagihan akhir (termasuk ongkir)._%0A`;
+            pesan += `%0A*Kirim ke Alamat:*%0A(Tulis nama & alamat lengkap di sini)%0A%0ATerima kasih Mak!`;
             
             window.open(`https://wa.me/${NOMOR_WA_TOKO}?text=${pesan}`, "_blank");
         }
 
-        // Eksekusi Pertama Kali
         fetchProducts();
     </script>
 </body>
