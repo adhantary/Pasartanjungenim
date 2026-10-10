@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Emak Dhony - Pasar Tanjung Enim</title>
+    <title>Sayurkuy! - Pasar Tanjung Enim</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,9 +28,9 @@
     <header class="bg-[#205031] lg:bg-transparent sticky lg:static top-0 z-40 shadow-md lg:shadow-none w-full">
         <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between lg:pt-6">
             <div class="flex items-center gap-3">
-                <img src="./images/logo-pasar.jpeg" alt="Logo Emak Dhony" class="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-white/30 bg-white shadow-sm" onerror="this.src='https://placehold.co/100x100/15803d/FFFFFF?text=ED'">
+                <img src="./images/logo-pasar.jpeg" alt="Logo Sayurkuy!" class="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-white/30 bg-white shadow-sm" onerror="this.src='https://placehold.co/100x100/15803d/FFFFFF?text=ED'">
                 <div>
-                    <h1 class="text-lg lg:text-2xl font-bold tracking-tight leading-tight text-white">Emak Dhony</h1>
+                    <h1 class="text-lg lg:text-2xl font-bold tracking-tight leading-tight text-white">Sayurkuy!</h1>
                     <p class="text-[11px] lg:text-sm text-green-100/80 mt-0.5">Pasar Tanjung Enim</p>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                         <div class="flex items-center gap-2 mb-2"><span class="text-xl">🛡️</span><p class="font-bold text-green-900 text-sm">Standar Layanan & Garansi</p></div>
                         <ul class="text-[11.5px] text-green-800 space-y-1.5 list-disc pl-5">
                             <li><span class="font-bold">Refund 100%</span> jika produk rusak / Force Majeure (Bencana/Cuaca ekstrem).</li>
-                            <li>Standar Timbangan Pas, gratis bersihkan ikan/daging.</li>
+                            <li>Standar Timbangan Pas, gratis bersihkan ikan (berat akan berkurang dari berat kotor).</li>
                         </ul>
                     </div>
                     <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-2xl md:col-span-2">
@@ -126,7 +126,7 @@
                 <div id="product-container">
                     <div class="text-center py-10 text-gray-500 font-medium flex flex-col items-center justify-center">
                         <div class="w-8 h-8 border-4 border-green-200 border-t-[#205031] rounded-full animate-spin mb-3"></div>
-                        Memuat etalase Emak Dhony...
+                        Memuat etalase Sayurkuy!...
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@
                         Data nama dan alamat Anda hanya digunakan untuk keperluan pengiriman pesanan. Kami berkomitmen menjaga privasi pelanggan.
                     </p>
                     <p class="text-[11px] text-gray-500 font-medium">
-                        &copy; 2026 Emak Dhony - Pasar Tanjung Enim. Dikelola oleh UMKM Lokal.
+                        &copy; 2026 Sayurkuy! - Pasar Tanjung Enim. Dikelola oleh UMKM Lokal.
                     </p>
                 </footer>
             </div>
@@ -213,7 +213,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             
-            <h3 class="font-extrabold text-xl text-gray-800 mb-2 mt-2">Ikuti Emak Dhony!</h3>
+            <h3 class="font-extrabold text-xl text-gray-800 mb-2 mt-2">Ikuti Sayurkuy!!</h3>
             <p class="text-[12px] text-gray-500 mb-6 leading-tight">Dapatkan info diskon, harga terbaru, dan keseruan aktivitas pasar di media sosial kami.</p>
             
             <div class="grid grid-cols-2 gap-3">
@@ -249,7 +249,7 @@
         // ⚠️ PENTING 2: KUNCI RAHASIA API ⚠️
         const API_KEY = "pasar-tanjung-enim-2026-aman";
         
-        // ⚠️ PENTING 3: NOMOR WHATSAPP EMAK DHONY ⚠️
+        // ⚠️ PENTING 3: NOMOR WHATSAPP Sayurkuy! ⚠️
         const NOMOR_WA_TOKO = "6281234567890";
 
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
@@ -571,7 +571,7 @@
             
             if (Object.keys(cart).length === 0 && customOrder === "") return;
 
-            let pesan = `*Halo Emak Dhony, saya mau order:*%0A%0A`;
+            let pesan = `*Halo Sayurkuy!, saya mau order:*%0A%0A`;
             let total = 0;
             let hasCatalogItem = false;
 
